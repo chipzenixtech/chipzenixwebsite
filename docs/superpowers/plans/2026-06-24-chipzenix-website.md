@@ -18,7 +18,7 @@ Copied from the spec (`docs/superpowers/specs/2026-06-24-chipzenix-website-desig
 - **Styling:** Tailwind CSS v4; all colors authored in **OKLCH** as CSS variables/`@theme` tokens; single source of truth shared with `DESIGN.md`.
 - **Register:** brand. Personality: precision & authority · trusted & enterprise-grade · bold & ambitious.
 - **Color:** one disciplined accent (logo cyan→teal). Body text ≥ **4.5:1**, large text ≥ **3:1**, placeholders ≥ 4.5:1.
-- **Type:** Space Grotesk (display/UI, multiple weights) + JetBrains Mono (technical/data). One proportional family + mono (contrast axis). Display clamp max ≤ **6rem**; display letter-spacing ≥ **-0.04em**; `text-wrap: balance` on h1–h3.
+- **Type:** Archivo (display/UI/body, multiple weights) + JetBrains Mono (technical/data). One proportional family + mono (contrast axis). [Space Grotesk/Inter/IBM Plex are on Impeccable's reflex-reject list — do not use.] Display clamp max ≤ **6rem**; display letter-spacing ≥ **-0.04em**; `text-wrap: balance` on h1–h3.
 - **Scrollbar:** native scrollbar **hidden globally** (`scrollbar-width:none` + `::-webkit-scrollbar{display:none}`); scroll stays fully functional; Lenis drives smoothing.
 - **Horizontal scroll:** ≥ 1–2 GSAP-pinned horizontal sections; on touch/small screens degrade to native `scroll-snap` carousel; under reduced-motion degrade to simple scroll/stack.
 - **Responsiveness (mandatory):** flawless at 360 / 768 / 1024 / 1440 / 1920; mobile-first; no horizontal overflow; tap targets ≥ 44px; headings tested for overflow at every breakpoint.
@@ -100,20 +100,20 @@ Run: `npm test -- --run` → Expected: "no test files" (runner works).
 
 - [ ] **Step 1: Run `/impeccable init`.** Answer from the approved spec (register=brand; users/goals/personality/anti-references per spec §1–2; a11y AA). It runs the palette helper (new project) — anchor the primary brand color on the logo cyan→teal and compose bg/surface/ink/muted/border around it in OKLCH. Write `PRODUCT.md` + `DESIGN.md`.
 
-- [ ] **Step 2: Define fonts** in `lib/fonts.ts` using `next/font/google`:
+- [ ] **Step 2: Define fonts** in `lib/fonts.ts` using `next/font/google` (Archivo + JetBrains Mono — Space Grotesk is reflex-rejected):
 
 ```ts
-import { Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Archivo, JetBrains_Mono } from "next/font/google";
 
-export const display = Space_Grotesk({
-  subsets: ["latin"], variable: "--font-display", display: "swap",
+export const sans = Archivo({
+  subsets: ["latin"], variable: "--font-archivo", display: "swap",
 });
 export const mono = JetBrains_Mono({
-  subsets: ["latin"], variable: "--font-mono", display: "swap",
+  subsets: ["latin"], variable: "--font-jbmono", display: "swap",
 });
 ```
 
-Apply `${display.variable} ${mono.variable}` on `<html>` in `app/layout.tsx`.
+Apply `${sans.variable} ${mono.variable}` on `<html>` in `app/layout.tsx`.
 
 - [ ] **Step 3: Write tokens + base in `app/globals.css`** (Tailwind v4 CSS-first). Use the OKLCH values produced by `DESIGN.md` in Step 1. Skeleton (fill real values from DESIGN.md):
 
