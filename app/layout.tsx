@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { sans, mono } from "@/lib/fonts";
 import { SmoothScrollProvider } from "@/lib/motion/SmoothScrollProvider";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -21,7 +23,9 @@ export default function RootLayout({
       <body className="min-h-dvh">
         <SmoothScrollProvider>
           <ScrollProgress />
+          <Nav />
           {children}
+          <Footer />
         </SmoothScrollProvider>
       </body>
     </html>

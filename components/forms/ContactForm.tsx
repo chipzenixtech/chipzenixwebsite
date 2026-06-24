@@ -6,6 +6,7 @@ import {
   validateContact,
   type ContactFields,
 } from "@/lib/whatsapp";
+import { Button } from "@/components/ui/Button";
 
 const EMPTY: ContactFields = { name: "", email: "", company: "", message: "" };
 
@@ -94,12 +95,7 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-wrap items-center gap-4">
-        <button
-          type="submit"
-          className="inline-flex min-h-12 items-center justify-center rounded-[var(--radius)] bg-accent px-6 py-3 font-semibold text-accent-ink transition-colors hover:bg-accent-strong"
-        >
-          Send via WhatsApp
-        </button>
+        <Button type="submit">Send via WhatsApp</Button>
         <p className="font-mono text-xs text-faint">
           Opens WhatsApp with your message ready to send.
         </p>
