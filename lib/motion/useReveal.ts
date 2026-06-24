@@ -39,15 +39,22 @@ export function useReveal<T extends HTMLElement = HTMLDivElement>(
         ? el.querySelectorAll(selector)
         : el;
 
-      gsap.from(targets, {
-        opacity: 0,
-        y,
-        duration,
-        delay,
-        ease: "power3.out",
-        stagger: selector ? stagger : undefined,
-        scrollTrigger: { trigger: el, start: "top 85%", once: true },
-      });
+      // fromTo with an explicit end state — content always ends visible, even
+      // across HMR / Strict Mode re-runs. If JS never runs, nothing is hidden.
+      gsap.fromTo(
+        targets,
+        { opacity: 0, y },
+        {
+          opacity: 1,
+          y: 0,
+          duration,
+          delay,
+          ease: "power3.out",
+          stagger: selector ? stagger : undefined,
+          clearProps: "opacity,transform",
+          scrollTrigger: { trigger: el, start: "top 85%", once: true },
+        },
+      );
     },
     { scope: ref, dependencies: [reduced] },
   );

@@ -17,14 +17,22 @@ export function Hero() {
   useGSAP(
     () => {
       if (!root.current || reduced) return;
-      gsap.from(root.current.querySelectorAll("[data-hero]"), {
-        opacity: 0,
-        y: 28,
-        duration: 0.9,
-        ease: "power3.out",
-        stagger: 0.12,
-        delay: 0.1,
-      });
+      // fromTo (explicit end state) — never leaves content stuck at opacity:0,
+      // even across HMR / React Strict Mode double-invokes. clearProps removes
+      // the inline styles once done so nothing lingers.
+      gsap.fromTo(
+        root.current.querySelectorAll("[data-hero]"),
+        { opacity: 0, y: 28 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: "power3.out",
+          stagger: 0.12,
+          delay: 0.1,
+          clearProps: "opacity,transform",
+        },
+      );
     },
     { scope: root, dependencies: [reduced] },
   );

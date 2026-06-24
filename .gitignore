@@ -24,8 +24,9 @@
 .DS_Store
 *.pem
 
-# local dev screenshot helper (not part of the deliverable)
+# local dev screenshot helper + previews (not part of the deliverable)
 /_shot.mjs
+/previews
 
 # debug
 npm-debug.log*
