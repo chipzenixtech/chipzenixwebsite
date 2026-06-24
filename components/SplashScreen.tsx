@@ -7,8 +7,8 @@ import { usePrefersReducedMotion } from "@/lib/motion/usePrefersReducedMotion";
 
 /**
  * Brand intro overlay. Client-only (never in SSR, so no-JS users see content immediately),
- * shown once per browser session, with a safety timeout so a GSAP failure can never trap the
- * page behind a blank splash.
+ * plays on every full page load / refresh (not on internal client-side navigation, since the
+ * layout doesn't remount). Has a safety timeout so a GSAP failure can never trap the page.
  */
 export function SplashScreen() {
   const [show, setShow] = useState(false);
@@ -16,8 +16,6 @@ export function SplashScreen() {
   const reduced = usePrefersReducedMotion();
 
   useEffect(() => {
-    if (sessionStorage.getItem("cz-splash")) return; // already shown this session
-    sessionStorage.setItem("cz-splash", "1");
     setShow(true);
   }, []);
 
