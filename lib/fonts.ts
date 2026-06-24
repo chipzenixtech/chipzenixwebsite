@@ -1,13 +1,23 @@
-import { Archivo, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import { JetBrains_Mono } from "next/font/google";
 
-// Display + body: Archivo (engineered grotesque, full weight range).
-export const sans = Archivo({
-  subsets: ["latin"],
-  variable: "--font-archivo",
+// Display headlines: Clash Display (distinctive, premium grotesque).
+export const display = localFont({
+  src: "../public/fonts/ClashDisplay-Variable.woff2",
+  variable: "--font-clash",
   display: "swap",
+  weight: "200 700",
 });
 
-// Technical data / specs: JetBrains Mono (authentic to the domain).
+// Body / UI: General Sans (clean, modern, not a training-data default).
+export const sans = localFont({
+  src: "../public/fonts/GeneralSans-Variable.woff2",
+  variable: "--font-general",
+  display: "swap",
+  weight: "200 700",
+});
+
+// Technical data / specs: JetBrains Mono.
 export const mono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jbmono",

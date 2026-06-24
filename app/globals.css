@@ -17,7 +17,8 @@
   --color-accent-ink: oklch(0.15 0.02 250);
   --color-danger: oklch(0.68 0.19 25);
 
-  --font-sans: var(--font-archivo), system-ui, sans-serif;
+  --font-display: var(--font-clash), system-ui, sans-serif;
+  --font-sans: var(--font-general), system-ui, sans-serif;
   --font-mono: var(--font-jbmono), ui-monospace, monospace;
 
   --radius-sm: 4px;
@@ -61,9 +62,10 @@ body {
 h1,
 h2,
 h3 {
+  font-family: var(--font-display);
   text-wrap: balance;
-  letter-spacing: -0.04em;
-  line-height: 1.05;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
 }
 p {
   text-wrap: pretty;
