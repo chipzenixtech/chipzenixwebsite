@@ -7,7 +7,14 @@ import { useEffect, useState } from "react";
  * Defaults to `false` on the server / first paint, updates on mount and on change.
  */
 export function usePrefersReducedMotion(): boolean {
-  const [reduced, setReduced] = useState(false);
+  // Initialize synchronously on the client so the reduced-motion path is active
+  // from the first effect run (no false→true flip that can arm an animation).
+  // The rendered DOM is identical regardless, so this is hydration-safe.
+  const [reduced, setReduced] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches,
+  );
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
