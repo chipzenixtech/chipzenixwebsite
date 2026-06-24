@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { sans, mono } from "@/lib/fonts";
+import { SmoothScrollProvider } from "@/lib/motion/SmoothScrollProvider";
+import { ScrollProgress } from "@/components/ScrollProgress";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -16,7 +18,12 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable} antialiased`}>
-      <body className="min-h-dvh">{children}</body>
+      <body className="min-h-dvh">
+        <SmoothScrollProvider>
+          <ScrollProgress />
+          {children}
+        </SmoothScrollProvider>
+      </body>
     </html>
   );
 }
