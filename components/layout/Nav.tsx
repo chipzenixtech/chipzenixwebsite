@@ -27,7 +27,12 @@ export function Nav() {
         className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-3.5 sm:px-8"
         aria-label="Primary"
       >
-        <Link href="/" className="flex items-center gap-2.5" aria-label="Chip Zenix home">
+        <Link
+          href="/"
+          prefetch={false}
+          className="flex items-center gap-2.5"
+          aria-label="Chip Zenix home"
+        >
           <Image
             src="/logo-icon.webp"
             alt=""
@@ -46,6 +51,7 @@ export function Nav() {
             <Link
               key={l.href}
               href={l.href}
+              prefetch={false}
               className="text-sm text-muted transition-colors hover:text-ink"
             >
               {l.label}

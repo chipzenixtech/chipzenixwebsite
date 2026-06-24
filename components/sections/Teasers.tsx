@@ -21,7 +21,7 @@ export function Teasers() {
         <div className="relative">
           <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">About</p>
           <h3 className="mt-3 text-2xl font-semibold text-ink sm:text-3xl">{vision}</h3>
-          <Link href="/about" className={arrowLink}>
+          <Link href="/about" prefetch={false} className={arrowLink}>
             Our story
             <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
               →
@@ -45,7 +45,7 @@ export function Teasers() {
             VLSI and embedded engineers who care about doing it right. Remote-friendly, across three
             time zones.
           </p>
-          <Link href="/careers" className={arrowLink}>
+          <Link href="/careers" prefetch={false} className={arrowLink}>
             See open roles
             <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
               →

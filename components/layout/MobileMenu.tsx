@@ -51,6 +51,7 @@ export function MobileMenu() {
               <Link
                 key={l.href}
                 href={l.href}
+                prefetch={false}
                 onClick={close}
                 className="border-b border-border py-4 text-2xl font-semibold text-ink"
               >

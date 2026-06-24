@@ -49,7 +49,13 @@ export function Button({
 
   if (href)
     return (
-      <Link href={href} className={cls} onClick={onClick} aria-label={ariaLabel}>
+      <Link
+        href={href}
+        prefetch={false}
+        className={cls}
+        onClick={onClick}
+        aria-label={ariaLabel}
+      >
         {children}
       </Link>
     );

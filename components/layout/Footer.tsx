@@ -15,7 +15,12 @@ export function Footer() {
     <footer className="border-t border-border bg-bg-deep">
       <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <Link href="/" className="flex items-center gap-2.5" aria-label="Chip Zenix home">
+          <Link
+            href="/"
+            prefetch={false}
+            className="flex items-center gap-2.5"
+            aria-label="Chip Zenix home"
+          >
             <Image src="/logo-icon.webp" alt="" width={36} height={36} className="h-9 w-9" />
             <span className="text-lg font-semibold tracking-tight text-ink">
               Chip<span className="text-accent">Zenix</span>
@@ -34,7 +39,12 @@ export function Footer() {
         <nav aria-label="Footer" className="flex flex-col gap-3">
           <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-faint">Navigate</h2>
           {navLinks.map((l) => (
-            <Link key={l.href} href={l.href} className="text-sm text-muted transition-colors hover:text-ink">
+            <Link
+              key={l.href}
+              href={l.href}
+              prefetch={false}
+              className="text-sm text-muted transition-colors hover:text-ink"
+            >
               {l.label}
             </Link>
           ))}

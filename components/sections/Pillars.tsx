@@ -49,6 +49,7 @@ export function Pillars() {
                 </ul>
                 <Link
                   href={`/services#${p.id}`}
+                  prefetch={false}
                   className="group mt-7 inline-flex items-center gap-2 font-medium text-accent transition-all hover:gap-3"
                 >
                   Explore {p.title}

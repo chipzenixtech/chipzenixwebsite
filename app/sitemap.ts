@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next";
 
+export const dynamic = "force-static";
+
 const BASE = "https://chipzenix.com"; // update to the real production domain
 
 export default function sitemap(): MetadataRoute.Sitemap {
