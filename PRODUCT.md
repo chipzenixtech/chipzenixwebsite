@@ -6,7 +6,7 @@ brand
 
 ## Users
 
-Two primary audiences visit a Chip Zenix surface:
+Two primary audiences visit a Chipzenix surface:
 
 - **Technical decision-makers at semiconductor / electronics companies** (VP Engineering,
   design managers, founders/CTOs) evaluating an engineering-services partner for VLSI/ASIC or
@@ -20,11 +20,11 @@ Secondary: partners / investors performing due-diligence-grade scrutiny of legit
 
 ## Product Purpose
 
-A marketing/brand website for Chip Zenix, a semiconductor engineering-services company
+A marketing/brand website for Chipzenix, a semiconductor engineering-services company
 (VLSI & ASIC design, embedded systems, AI hardware acceleration). It exists to convert qualified
 B2B interest into a contact (via WhatsApp), establish credibility for investors/partners, attract
 engineering talent, and serve as a world-class brand presence. Success = a skeptical technical
-visitor leaves convinced Chip Zenix is expert and dependable, and reaches out.
+visitor leaves convinced Chipzenix is expert and dependable, and reaches out.
 
 ## Brand Personality
 

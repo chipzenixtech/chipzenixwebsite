@@ -1,4 +1,4 @@
-# Chip Zenix — Build & Deploy
+# Chipzenix — Build & Deploy
 
 Static-exported Next.js site. No server required — the build produces a folder of static
 HTML/CSS/JS you can host anywhere.

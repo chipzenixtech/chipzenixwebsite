@@ -9,7 +9,7 @@ import { mission, vision, stats, founders, locations } from "@/lib/content";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Chip Zenix is a semiconductor engineering services company across Silicon Valley, Bengaluru, and Munich.",
+    "Chipzenix is a semiconductor engineering services company across Silicon Valley, Bengaluru, and Munich.",
 };
 
 export default function AboutPage() {
@@ -18,7 +18,7 @@ export default function AboutPage() {
       <PageHeader
         kicker="About"
         title="People who take silicon seriously"
-        intro="Chip Zenix is a semiconductor and embedded engineering team built around one idea: hard silicon problems deserve engineers who sweat the details."
+        intro="Chipzenix is a semiconductor and embedded engineering team built around one idea: hard silicon problems deserve engineers who sweat the details."
       />
 
       {/* Mission & Vision */}
@@ -62,7 +62,7 @@ export default function AboutPage() {
           <Reveal className="max-w-2xl">
             <h2 className="text-3xl font-semibold text-ink sm:text-4xl">Founders</h2>
             <p className="mt-4 text-muted">
-              The people accountable for every engagement at Chip Zenix.
+              The people accountable for every engagement at Chipzenix.
             </p>
           </Reveal>
           <Reveal selector="[data-founder]" className="mt-12 grid gap-8 sm:grid-cols-2">
@@ -75,7 +75,7 @@ export default function AboutPage() {
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-bg-deep">
                   <Image
                     src={f.image}
-                    alt={`Portrait of ${f.name}, ${f.role} of Chip Zenix`}
+                    alt={`Portrait of ${f.name}, ${f.role} of Chipzenix`}
                     fill
                     sizes="(min-width:640px) 46vw, 100vw"
                     className="object-cover object-top"

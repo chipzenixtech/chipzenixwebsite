@@ -31,7 +31,7 @@ export function Nav() {
           href="/"
           prefetch={false}
           className="flex items-center gap-2.5"
-          aria-label="Chip Zenix home"
+          aria-label="Chipzenix home"
         >
           <Image
             src="/logo-icon.webp"
@@ -42,7 +42,7 @@ export function Nav() {
             priority
           />
           <span className="text-lg font-semibold tracking-tight text-ink">
-            Chip<span className="text-accent">Zenix</span>
+            Chip<span className="text-accent">zenix</span>
           </span>
         </Link>
 

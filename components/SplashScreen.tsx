@@ -1,0 +1,94 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { gsap } from "gsap";
+import { usePrefersReducedMotion } from "@/lib/motion/usePrefersReducedMotion";
+
+/**
+ * Brand intro overlay. Client-only (never in SSR, so no-JS users see content immediately),
+ * shown once per browser session, with a safety timeout so a GSAP failure can never trap the
+ * page behind a blank splash.
+ */
+export function SplashScreen() {
+  const [show, setShow] = useState(false);
+  const root = useRef<HTMLDivElement>(null);
+  const reduced = usePrefersReducedMotion();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("cz-splash")) return; // already shown this session
+    sessionStorage.setItem("cz-splash", "1");
+    setShow(true);
+  }, []);
+
+  useEffect(() => {
+    if (!show) return;
+    const el = root.current;
+    if (!el) return;
+
+    document.documentElement.style.overflow = "hidden";
+    const finish = () => {
+      document.documentElement.style.overflow = "";
+      setShow(false);
+    };
+    const safety = window.setTimeout(finish, 4500);
+
+    const ctx = gsap.context(() => {
+      if (reduced) {
+        gsap.to(el, { autoAlpha: 0, duration: 0.3, delay: 0.6, onComplete: finish });
+        return;
+      }
+      gsap
+        .timeline({ onComplete: finish })
+        .from("[data-splash-mark]", { scale: 0.82, autoAlpha: 0, duration: 0.7, ease: "power3.out" })
+        .from("[data-splash-word]", { autoAlpha: 0, y: 12, duration: 0.5, ease: "power2.out" }, "-=0.3")
+        .fromTo(
+          "[data-splash-bar]",
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.9, ease: "power2.inOut" },
+          "-=0.25",
+        )
+        .to(el, { yPercent: -100, duration: 0.85, ease: "power4.inOut" }, "+=0.15");
+    }, root);
+
+    return () => {
+      window.clearTimeout(safety);
+      ctx.revert();
+      document.documentElement.style.overflow = "";
+    };
+  }, [show, reduced]);
+
+  if (!show) return null;
+
+  return (
+    <div
+      ref={root}
+      role="presentation"
+      className="fixed inset-0 z-[var(--z-splash)] flex flex-col items-center justify-center bg-bg-deep"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute h-80 w-80 rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(0,223,226,0.14), transparent 65%)" }}
+      />
+      <Image
+        data-splash-mark
+        src="/logo-icon.webp"
+        alt="Chipzenix"
+        width={96}
+        height={96}
+        priority
+        className="relative h-20 w-20"
+      />
+      <p
+        data-splash-word
+        className="relative mt-5 font-display text-2xl font-semibold tracking-tight text-ink"
+      >
+        Chip<span className="text-accent">zenix</span>
+      </p>
+      <div className="relative mt-7 h-px w-40 overflow-hidden bg-border">
+        <div data-splash-bar className="h-full w-full origin-left bg-accent" />
+      </div>
+    </div>
+  );
+}

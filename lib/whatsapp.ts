@@ -5,7 +5,7 @@ export type ContactFields = {
   message: string;
 };
 
-/** Chip Zenix WhatsApp number in wa.me form (digits only, country code, no +). */
+/** Chipzenix WhatsApp number in wa.me form (digits only, country code, no +). */
 export const WHATSAPP_NUMBER = "919618102268";
 
 export function validateContact(
@@ -23,7 +23,7 @@ export function validateContact(
 /** Compose a wa.me click-to-chat URL pre-filled with the enquiry. */
 export function buildWhatsAppUrl(f: ContactFields): string {
   const lines = [
-    "New enquiry from the Chip Zenix website",
+    "New enquiry from the Chipzenix website",
     "",
     `Name: ${f.name}`,
     `Email: ${f.email}`,

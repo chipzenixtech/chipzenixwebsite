@@ -1,6 +1,6 @@
 # Design
 
-Visual system for Chip Zenix. The OKLCH tokens here are the single source of truth, implemented in
+Visual system for Chipzenix. The OKLCH tokens here are the single source of truth, implemented in
 `app/globals.css` (Tailwind v4 `@theme`). Identity is preserved from the existing logo (deep navy
 field + cyan→teal mark); colors below are derived from it, not invented.
 

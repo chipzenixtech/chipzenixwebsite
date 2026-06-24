@@ -22,7 +22,7 @@ export function Pillars() {
           Two disciplines, one partner
         </h2>
         <p className="mt-4 text-lg text-muted">
-          From RTL to tapeout, and from firmware to the field — Chip Zenix covers the full
+          From RTL to tapeout, and from firmware to the field — Chipzenix covers the full
           silicon-to-software stack under one roof.
         </p>
       </Reveal>

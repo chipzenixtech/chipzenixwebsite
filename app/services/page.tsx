@@ -7,7 +7,7 @@ import { pillars } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "VLSI & ASIC design and embedded systems engineering services from Chip Zenix — RTL to tapeout, firmware to the field.",
+    "VLSI & ASIC design and embedded systems engineering services from Chipzenix — RTL to tapeout, firmware to the field.",
 };
 
 export default function ServicesPage() {

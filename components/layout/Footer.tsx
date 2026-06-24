@@ -19,11 +19,11 @@ export function Footer() {
             href="/"
             prefetch={false}
             className="flex items-center gap-2.5"
-            aria-label="Chip Zenix home"
+            aria-label="Chipzenix home"
           >
             <Image src="/logo-icon.webp" alt="" width={36} height={36} className="h-9 w-9" />
             <span className="text-lg font-semibold tracking-tight text-ink">
-              Chip<span className="text-accent">Zenix</span>
+              Chip<span className="text-accent">zenix</span>
             </span>
           </Link>
           <p className="mt-4 max-w-xs text-sm text-muted">{site.taglineLong}</p>
@@ -71,7 +71,7 @@ export function Footer() {
 
       <div className="border-t border-border">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-xs text-faint sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p>© {year} Chip Zenix. All rights reserved.</p>
+          <p>© {year} Chipzenix. All rights reserved.</p>
           <p className="font-mono">Engineering Tomorrow&rsquo;s Silicon</p>
         </div>
       </div>

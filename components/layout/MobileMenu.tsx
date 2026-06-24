@@ -33,7 +33,7 @@ export function MobileMenu() {
         <div className="flex h-dvh w-full flex-col p-6">
           <div className="flex items-center justify-between">
             <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-              Chip Zenix
+              Chipzenix
             </span>
             <button
               onClick={close}

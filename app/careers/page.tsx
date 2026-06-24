@@ -8,7 +8,7 @@ import { site } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Careers",
   description:
-    "Join Chip Zenix — VLSI and embedded engineering roles across Silicon Valley, Bengaluru, and Munich.",
+    "Join Chipzenix — VLSI and embedded engineering roles across Silicon Valley, Bengaluru, and Munich.",
 };
 
 const values = [

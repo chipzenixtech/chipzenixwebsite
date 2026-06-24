@@ -19,11 +19,11 @@ export type NavLink = { label: string; href: string };
 
 // ── Site / contact ───────────────────────────────────────────────────────────
 export const site = {
-  name: "Chip Zenix",
+  name: "Chipzenix",
   tagline: "Engineering Tomorrow's Silicon",
   taglineLong: "Innovating silicon, delivering excellence, building lasting partnerships.",
   intro:
-    "Chip Zenix is a semiconductor engineering services company. We design VLSI & ASIC, build embedded systems, and accelerate AI hardware — from architecture to signoff.",
+    "Chipzenix is a semiconductor engineering services company. We design VLSI & ASIC, build embedded systems, and accelerate AI hardware — from architecture to signoff.",
   contact: {
     whatsapp: WHATSAPP_NUMBER,
     whatsappDisplay: "+91 96181 02268",
@@ -129,7 +129,7 @@ export const processSteps: ProcessStep[] = [
 // ── Testimonial ──────────────────────────────────────────────────────────────
 export const testimonial: Testimonial = {
   quote:
-    "Chip Zenix executed our 7nm SoC verification flawlessly. Their UVM expertise and discipline meaningfully reduced our schedule risk.",
+    "Chipzenix executed our 7nm SoC verification flawlessly. Their UVM expertise and discipline meaningfully reduced our schedule risk.",
   name: "Anika Rao",
   title: "VP Engineering, Helix Silicon",
 };
@@ -139,7 +139,7 @@ export const founders: Founder[] = [
   {
     name: "Muzammil",
     role: "Co-Founder & CEO",
-    bio: "Leads Chip Zenix's vision and client partnerships, spanning semiconductor design and engineering delivery.",
+    bio: "Leads Chipzenix's vision and client partnerships, spanning semiconductor design and engineering delivery.",
     image: "/founder.webp",
   },
   {

@@ -7,7 +7,7 @@ import { site, locations } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Start a semiconductor or embedded engineering project with Chip Zenix. Message us on WhatsApp or send an enquiry.",
+    "Start a semiconductor or embedded engineering project with Chipzenix. Message us on WhatsApp or send an enquiry.",
 };
 
 export default function ContactPage() {

@@ -14,7 +14,7 @@ import { WHATSAPP_NUMBER } from "./whatsapp";
 
 describe("content", () => {
   it("carries the brand identity and WhatsApp contact", () => {
-    expect(site.name).toBe("Chip Zenix");
+    expect(site.name).toBe("Chipzenix");
     expect(site.tagline).toMatch(/silicon/i);
     expect(site.contact.whatsapp).toBe(WHATSAPP_NUMBER);
   });

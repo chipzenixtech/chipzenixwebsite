@@ -24,18 +24,20 @@
   --radius-sm: 4px;
   --radius: 8px;
   --radius-lg: 14px;
-
-  /* Semantic z-index scale */
-  --z-base: 0;
-  --z-sticky: 100;
-  --z-overlay: 200;
-  --z-modal: 300;
-  --z-toast: 400;
 }
 
 /* ── Base ────────────────────────────────────────────────────────────────── */
 :root {
   color-scheme: dark;
+
+  /* Semantic z-index scale (kept here, not in @theme, so the vars are always
+     emitted and resolve in z-[var(--z-*)] utilities). */
+  --z-base: 0;
+  --z-sticky: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-toast: 400;
+  --z-splash: 500;
 }
 
 /* Hidden scrollbar — global, scroll stays fully functional (mandatory) */
