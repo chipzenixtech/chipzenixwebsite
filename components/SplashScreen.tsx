@@ -33,20 +33,21 @@ export function SplashScreen() {
 
     const ctx = gsap.context(() => {
       if (reduced) {
-        gsap.to(el, { autoAlpha: 0, duration: 0.3, delay: 0.6, onComplete: finish });
+        // ~3s static hold, then fade out.
+        gsap.to(el, { autoAlpha: 0, duration: 0.5, delay: 2.6, onComplete: finish });
         return;
       }
       gsap
         .timeline({ onComplete: finish })
-        .from("[data-splash-mark]", { scale: 0.82, autoAlpha: 0, duration: 0.7, ease: "power3.out" })
-        .from("[data-splash-word]", { autoAlpha: 0, y: 12, duration: 0.5, ease: "power2.out" }, "-=0.3")
-        .fromTo(
-          "[data-splash-bar]",
-          { scaleX: 0 },
-          { scaleX: 1, duration: 0.9, ease: "power2.inOut" },
-          "-=0.25",
+        .from("[data-splash-mark]", { scale: 0.85, autoAlpha: 0, duration: 1, ease: "power3.out" })
+        .from("[data-splash-word]", { autoAlpha: 0, y: 16, duration: 0.7, ease: "power2.out" }, "-=0.5")
+        // gentle breathing hold so the intro lasts ~3s instead of flashing by
+        .to(
+          "[data-splash-mark]",
+          { scale: 1.04, duration: 0.8, ease: "sine.inOut", yoyo: true, repeat: 1 },
+          "-=0.2",
         )
-        .to(el, { yPercent: -100, duration: 0.85, ease: "power4.inOut" }, "+=0.15");
+        .to(el, { yPercent: -100, duration: 0.85, ease: "power4.inOut" }, "+=0.25");
     }, root);
 
     return () => {
@@ -80,13 +81,10 @@ export function SplashScreen() {
       />
       <p
         data-splash-word
-        className="relative mt-5 font-display text-2xl font-semibold tracking-tight text-ink"
+        className="relative mt-5 font-display text-3xl font-semibold tracking-tight text-ink"
       >
         Chip<span className="text-accent">zenix</span>
       </p>
-      <div className="relative mt-7 h-px w-40 overflow-hidden bg-border">
-        <div data-splash-bar className="h-full w-full origin-left bg-accent" />
-      </div>
     </div>
   );
 }
