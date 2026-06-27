@@ -20,6 +20,7 @@
   --font-display: var(--font-clash), system-ui, sans-serif;
   --font-sans: var(--font-general), system-ui, sans-serif;
   --font-mono: var(--font-jbmono), ui-monospace, monospace;
+  --font-label: var(--font-chakra), var(--font-general), system-ui, sans-serif;
 
   --radius-sm: 4px;
   --radius: 8px;

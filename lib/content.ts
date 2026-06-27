@@ -1,7 +1,7 @@
 import { WHATSAPP_NUMBER } from "./whatsapp";
 
 // ── Types ───────────────────────────────────────────────────────────────────
-export type Stat = { value: number; suffix: string; label: string };
+export type Proposition = { title: string; detail: string };
 export type Service = { name: string; description: string };
 export type Pillar = {
   id: string;
@@ -12,7 +12,6 @@ export type Pillar = {
 };
 export type CapabilityGroup = { category: string; items: string[] };
 export type ProcessStep = { title: string; description: string };
-export type Founder = { name: string; role: string; bio: string; image: string };
 export type Location = { city: string; region: string; role?: string };
 export type Testimonial = { quote: string; name: string; title: string };
 export type NavLink = { label: string; href: string };
@@ -28,12 +27,12 @@ export const site = {
     whatsapp: WHATSAPP_NUMBER,
     whatsappDisplay: "+91 96181 02268",
     email: "hello@chipzenix.com",
-    phone: "+1 (408) 555-0142",
   },
 } as const;
 
 export const navLinks: NavLink[] = [
   { label: "Services", href: "/services" },
+  { label: "Industries", href: "/#industries" },
   { label: "About", href: "/about" },
   { label: "Careers", href: "/careers" },
   { label: "Contact", href: "/contact" },
@@ -45,11 +44,23 @@ export const mission =
 export const vision =
   "To be the engineering partner the semiconductor industry trusts to define the next decade of silicon.";
 
-// ── Proof ────────────────────────────────────────────────────────────────────
-export const stats: Stat[] = [
-  { value: 100, suffix: "+", label: "Projects delivered" },
-  { value: 50, suffix: "+", label: "Engineers on staff" },
-  { value: 99, suffix: "%", label: "Client satisfaction" },
+// ── How we work (positioning, not track-record metrics) ──────────────────────
+export const propositions: Proposition[] = [
+  {
+    title: "Under one roof",
+    detail:
+      "VLSI/ASIC design and embedded systems from a single accountable team — no hand-offs between vendors.",
+  },
+  {
+    title: "Architecture to signoff",
+    detail:
+      "We own the full flow — RTL and microarchitecture through verification, physical design, and clean signoff.",
+  },
+  {
+    title: "No black boxes",
+    detail:
+      "Reviewable milestones, live coverage tracking, and documentation your team can own and extend.",
+  },
 ];
 
 // ── Service pillars ──────────────────────────────────────────────────────────
@@ -99,11 +110,14 @@ export const pillars: Pillar[] = [
 
 // ── Capabilities (the tech arsenal) ──────────────────────────────────────────
 export const capabilities: CapabilityGroup[] = [
-  { category: "Languages & HDLs", items: ["Verilog", "SystemVerilog", "VHDL", "Embedded C", "C++", "Python"] },
-  { category: "Verification", items: ["UVM", "SystemVerilog Assertions", "Coverage-driven"] },
-  { category: "EDA Tools", items: ["Cadence", "Synopsys", "Mentor Graphics"] },
-  { category: "Platforms", items: ["RTOS", "Embedded Linux"] },
-  { category: "Architectures", items: ["ARM", "RISC-V"] },
+  { category: "Languages & HDLs", items: ["Verilog", "SystemVerilog", "VHDL", "Embedded C", "C++", "Python", "Tcl"] },
+  { category: "Verification", items: ["UVM", "SystemVerilog Assertions", "Coverage-driven", "Formal", "Gate-level sim"] },
+  { category: "Methodologies", items: ["Constrained-random", "Low-power (UPF)", "DFT & scan", "STA signoff", "Emulation"] },
+  { category: "EDA Tools", items: ["Cadence", "Synopsys", "Siemens EDA", "AMD Vivado", "Intel Quartus"] },
+  { category: "Protocols & IP", items: ["AMBA / AXI", "PCIe", "USB", "Ethernet", "DDR", "MIPI"] },
+  { category: "Platforms", items: ["RTOS", "Embedded Linux", "FreeRTOS", "Zephyr", "AUTOSAR"] },
+  { category: "Architectures", items: ["ARM", "RISC-V", "x86", "FPGA fabric"] },
+  { category: "Connectivity", items: ["I2C", "SPI", "UART", "CAN", "BLE", "Wi-Fi"] },
 ];
 
 // ── Industries ───────────────────────────────────────────────────────────────
@@ -126,33 +140,30 @@ export const processSteps: ProcessStep[] = [
   { title: "Signoff & handoff", description: "Clean signoff, complete documentation, and a handoff your team can own and extend." },
 ];
 
-// ── Testimonial ──────────────────────────────────────────────────────────────
-export const testimonial: Testimonial = {
-  quote:
-    "Chipzenix executed our 7nm SoC verification flawlessly. Their UVM expertise and discipline meaningfully reduced our schedule risk.",
-  name: "Anika Rao",
-  title: "VP Engineering, Helix Silicon",
-};
-
-// ── Founders (placeholder content — real names, roles, bios & headshots TBD) ──
-export const founders: Founder[] = [
+// ── Testimonials (illustrative — replace with real client quotes) ────────────
+export const testimonials: Testimonial[] = [
   {
-    name: "Muzammil",
-    role: "Co-Founder & CEO",
-    bio: "Leads Chipzenix's vision and client partnerships, spanning semiconductor design and engineering delivery.",
-    image: "/founder.webp",
+    quote:
+      "Chipzenix executed our 7nm SoC verification flawlessly. Their UVM expertise and discipline meaningfully reduced our schedule risk.",
+    name: "Anika Rao",
+    title: "VP Engineering, Helix Silicon",
   },
   {
-    name: "Founder Two",
-    role: "Co-Founder & CTO",
-    bio: "Drives technical direction across VLSI and embedded engineering, from architecture through signoff.",
-    image: "/founder.webp",
+    quote:
+      "They took our embedded platform from a flaky prototype to a shipping product. Firmware quality and communication were both exceptional.",
+    name: "Daniel Mertens",
+    title: "Director of Hardware, Northwind Robotics",
+  },
+  {
+    quote:
+      "The physical-design team closed timing on a block we'd fought for months. Clean signoff, complete documentation, zero drama.",
+    name: "Priya Nair",
+    title: "Silicon Lead, Aether Compute",
   },
 ];
 
 // ── Locations ────────────────────────────────────────────────────────────────
 export const locations: Location[] = [
-  { city: "Silicon Valley", region: "California, USA", role: "Headquarters" },
-  { city: "Bengaluru", region: "India" },
-  { city: "Munich", region: "Germany" },
+  { city: "Hyderabad", region: "Telangana, India", role: "Headquarters" },
+  { city: "Satupally", region: "Telangana, India", role: "Engineering centre" },
 ];

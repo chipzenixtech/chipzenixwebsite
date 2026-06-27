@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRef } from "react";
 import { navLinks } from "@/lib/content";
+import { handleHashNav } from "@/lib/motion/hashNav";
 import { Button } from "@/components/ui/Button";
 
 export function MobileMenu() {
@@ -15,7 +16,7 @@ export function MobileMenu() {
       <button
         onClick={open}
         aria-label="Open menu"
-        className="inline-flex h-11 w-11 items-center justify-center rounded-[var(--radius)] border border-border text-ink"
+        className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-border bg-surface/70 text-ink backdrop-blur-md"
       >
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -52,7 +53,10 @@ export function MobileMenu() {
                 key={l.href}
                 href={l.href}
                 prefetch={false}
-                onClick={close}
+                onClick={(e) => {
+                  handleHashNav(e, l.href);
+                  close();
+                }}
                 className="border-b border-border py-4 text-2xl font-semibold text-ink"
               >
                 {l.label}

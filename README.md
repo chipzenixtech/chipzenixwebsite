@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Chipzenix
 
-## Getting Started
+Marketing website for **Chipzenix** — a semiconductor engineering services company
+(VLSI & ASIC design, embedded systems, and AI hardware acceleration), based in
+Hyderabad and Satupally, Telangana, India.
 
-First, run the development server:
+Dark, brand-true marketing site with an animated circuit/wafer visual language,
+smooth scrolling, and scroll-triggered reveals. Built as a fully static site so it
+can be hosted on any static host or CDN.
+
+## Tech stack
+
+| Area | Choice |
+| --- | --- |
+| Framework | Next.js 16 (App Router, Turbopack) |
+| UI | React 19, TypeScript |
+| Styling | Tailwind CSS v4 (CSS-first `@theme`, OKLCH tokens) |
+| Motion | GSAP 3 + ScrollTrigger, `@gsap/react`, Lenis smooth scroll |
+| Fonts | `next/font` — Clash Display, General Sans, JetBrains Mono, Chakra Petch |
+| Testing | Vitest + Testing Library; Playwright (visual checks) |
+| Output | Static export (`output: "export"`) |
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # dev server at http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Scripts
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Script | What it does |
+| --- | --- |
+| `npm run dev` | Start the dev server |
+| `npm run build` | Production build → static export into `out/` |
+| `npm run lint` | ESLint |
+| `npm run test` | Vitest (watch) |
+| `npm run test:run` | Vitest (single run, CI) |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+app/                 App Router routes (home, services, about, careers, contact)
+  layout.tsx         Root layout — metadata, JSON-LD, fonts, providers, nav, footer
+  sitemap.ts         /sitemap.xml (force-static)
+  robots.ts          /robots.txt (force-static)
+components/
+  layout/            PillNav, MobileMenu, Footer, PageHeader
+  sections/          Page sections (Hero, TrustStrip, Industries, Pillars, …)
+  ui/                Reusable UI (Propositions, SpotlightCard, Reveal, Button, …)
+  visual/            Canvas backgrounds (CircuitField, WaferField), GrainOverlay
+  forms/             ContactForm (WhatsApp hand-off, no backend)
+lib/
+  content.ts         Single source of truth for site copy & data
+  fonts.ts           next/font definitions
+  whatsapp.ts        WhatsApp deep-link builder
+  motion/            Lenis provider, hash navigation, reduced-motion hook
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Content
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All copy and structured data live in `lib/content.ts` — there is no CMS. Sales/marketing
+edits are made there. Notably, the site uses **truthful positioning statements**
+(`propositions`) rather than fabricated metrics, since the company is pre-launch.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Contact
 
-## Deploy on Vercel
+The only live contact channel is **WhatsApp** (`+91 96181 02268`). The contact form
+composes a pre-filled WhatsApp message — there is no server-side form handling.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Motion & accessibility
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Decorative canvas effects** (hero `CircuitField`, `WaferField`) animate on every
+  device, independent of OS reduced-motion, but are intentionally low-amplitude,
+  slow, and non-flashing. They **pause when scrolled off-screen or when the tab is
+  hidden** (IntersectionObserver + `visibilitychange`) to save CPU.
+- **Heavier, motion-sensitive effects** (splash, scroll reveals, pinned/horizontal
+  scrollers) honour `prefers-reduced-motion`.
+- Smooth scrolling is via Lenis (`lerp: 0.1`); reveals use `gsap.fromTo` so content
+  is never left stuck at `opacity: 0`.
+
+## SEO
+
+- Per-page metadata (title template, description, keywords) and canonicals.
+- OpenGraph + Twitter cards, brand favicon, and a generated OG image.
+- `Organization` + `WebSite` JSON-LD structured data in the root layout.
+- `sitemap.xml` and `robots.txt` covering all routes.
+
+> **Before launch:** update `SITE_URL` in `app/layout.tsx` and `BASE` in
+> `app/sitemap.ts` / `app/robots.ts` from the placeholder `https://chipzenix.com`
+> to the real production domain.
+
+## Build & deploy
+
+```bash
+npm run build        # emits a static site to ./out
+```
+
+`out/` is a self-contained static bundle (no Node server required). Serve it from any
+static host/CDN. `next.config.ts` sets `output: "export"`, `images.unoptimized`, and
+`trailingSlash` for clean nested-route hosting.

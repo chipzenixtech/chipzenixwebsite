@@ -7,7 +7,7 @@ import { useGSAP } from "@gsap/react";
 import { Button } from "@/components/ui/Button";
 import { CircuitField } from "@/components/visual/CircuitField";
 import { usePrefersReducedMotion } from "@/lib/motion/usePrefersReducedMotion";
-import { site, locations } from "@/lib/content";
+import { site } from "@/lib/content";
 
 gsap.registerPlugin(useGSAP);
 
@@ -37,7 +37,9 @@ export function Hero() {
 
   return (
     <section className="relative isolate flex min-h-dvh items-center overflow-hidden bg-bg-deep pt-24">
-      <CircuitField className="pointer-events-none absolute inset-0 h-full w-full opacity-50 [mask-image:radial-gradient(150%_120%_at_55%_35%,black,transparent_78%)]" />
+      <CircuitField className="pointer-events-none absolute inset-0 h-full w-full opacity-90 [mask-image:radial-gradient(150%_130%_at_55%_38%,black_68%,transparent_100%)]" />
+      {/* light scrim only directly behind the copy column so body text stays legible */}
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-bg-deep/55 via-bg-deep/10 to-transparent" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-bg-deep/30 via-transparent to-bg-deep" />
 
       <div
@@ -47,10 +49,9 @@ export function Hero() {
         <div>
           <p
             data-hero
-            className="flex items-center gap-3 font-mono text-xs tracking-[0.22em] text-accent sm:text-sm"
+            className="font-label text-xs uppercase tracking-[0.18em] text-accent sm:text-sm"
           >
-            <span className="h-px w-8 bg-accent" />
-            SEMICONDUCTOR ENGINEERING SERVICES
+            Semiconductor Engineering Services
           </p>
           <h1
             data-hero
@@ -72,17 +73,6 @@ export function Hero() {
               Explore services
             </Button>
           </div>
-          <p
-            data-hero
-            className="mt-12 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-faint"
-          >
-            {locations.map((l, i) => (
-              <span key={l.city} className="flex items-center gap-3">
-                {i > 0 && <span className="text-border-strong">/</span>}
-                {l.city}
-              </span>
-            ))}
-          </p>
         </div>
 
         <div data-hero className="relative hidden lg:block">

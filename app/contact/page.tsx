@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   title: "Contact",
   description:
     "Start a semiconductor or embedded engineering project with Chipzenix. Message us on WhatsApp or send an enquiry.",
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {
@@ -29,7 +30,7 @@ export default function ContactPage() {
 
           <Reveal className="flex flex-col gap-8">
             <div>
-              <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-faint">Direct</h2>
+              <h2 className="font-label text-xs uppercase tracking-[0.16em] text-faint">Direct</h2>
               <div className="mt-4 flex flex-col gap-2">
                 <a
                   href={wa}
@@ -45,17 +46,11 @@ export default function ContactPage() {
                 >
                   {site.contact.email}
                 </a>
-                <a
-                  href={`tel:${site.contact.phone.replace(/[^+\d]/g, "")}`}
-                  className="text-muted transition-colors hover:text-ink"
-                >
-                  {site.contact.phone}
-                </a>
               </div>
             </div>
 
             <div>
-              <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-faint">Locations</h2>
+              <h2 className="font-label text-xs uppercase tracking-[0.16em] text-faint">Locations</h2>
               <ul className="mt-4 flex flex-col gap-3">
                 {locations.map((l) => (
                   <li key={l.city}>

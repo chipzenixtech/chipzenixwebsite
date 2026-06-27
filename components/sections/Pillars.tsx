@@ -17,11 +17,11 @@ const media: Record<string, { src: string; alt: string }> = {
 export function Pillars() {
   return (
     <section id="pillars" className="mx-auto max-w-7xl px-5 py-24 sm:px-8 sm:py-32">
-      <Reveal className="max-w-2xl">
+      <Reveal className="mx-auto max-w-2xl text-center">
         <h2 className="text-[clamp(2rem,4.5vw,3.25rem)] font-semibold text-ink">
           Two disciplines, one partner
         </h2>
-        <p className="mt-4 text-lg text-muted">
+        <p className="mx-auto mt-4 text-lg text-muted">
           From RTL to tapeout, and from firmware to the field — Chipzenix covers the full
           silicon-to-software stack under one roof.
         </p>
@@ -34,14 +34,17 @@ export function Pillars() {
           return (
             <Reveal key={p.id} className="grid items-center gap-10 lg:grid-cols-2">
               <div className={flip ? "lg:order-2" : ""}>
-                <p className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
+                <p className="font-label text-xs uppercase tracking-[0.16em] text-accent">
                   {p.tagline}
                 </p>
                 <h3 className="mt-3 text-3xl font-semibold text-ink sm:text-4xl">{p.title}</h3>
                 <p className="mt-4 max-w-md text-muted">{p.description}</p>
                 <ul className="mt-6 flex flex-wrap gap-2 font-mono text-xs text-muted">
                   {p.services.slice(0, 6).map((s) => (
-                    <li key={s.name} className="rounded-sm border border-border px-2.5 py-1">
+                    <li
+                      key={s.name}
+                      className="cursor-default rounded-sm border border-border px-2.5 py-1 transition-all duration-200 hover:-translate-y-0.5 hover:border-accent/50 hover:bg-surface hover:text-ink"
+                    >
                       {s.name}
                     </li>
                   ))}
@@ -60,7 +63,7 @@ export function Pillars() {
               </div>
 
               <figure
-                className={`relative aspect-[5/4] overflow-hidden rounded-lg border border-border ${
+                className={`group relative aspect-[5/4] overflow-hidden rounded-lg border border-border transition-all duration-500 hover:border-accent/40 hover:shadow-[0_0_50px_-12px_rgba(0,223,226,0.45)] ${
                   flip ? "lg:order-1" : ""
                 }`}
               >
@@ -69,9 +72,10 @@ export function Pillars() {
                   alt={m.alt}
                   fill
                   sizes="(min-width:1024px) 46vw, 100vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-tr from-bg-deep/70 via-bg-deep/10 to-transparent" />
+                <div className="absolute inset-0 bg-accent/0 transition-colors duration-500 group-hover:bg-accent/10" />
               </figure>
             </Reveal>
           );

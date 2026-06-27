@@ -20,8 +20,7 @@ export function PageHeader({
       <div className="relative mx-auto max-w-7xl px-5 pb-16 pt-36 sm:px-8 sm:pb-20 sm:pt-44">
         <Reveal>
           {kicker && (
-            <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-accent">
-              <span className="h-px w-8 bg-accent" />
+            <p className="font-label text-xs uppercase tracking-[0.18em] text-accent">
               {kicker}
             </p>
           )}

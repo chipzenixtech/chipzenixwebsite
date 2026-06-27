@@ -1,13 +1,12 @@
 import { describe, it, expect } from "vitest";
 import {
   site,
-  stats,
+  propositions,
   pillars,
-  founders,
   capabilities,
   industries,
   processSteps,
-  testimonial,
+  testimonials,
   locations,
 } from "./content";
 import { WHATSAPP_NUMBER } from "./whatsapp";
@@ -19,9 +18,12 @@ describe("content", () => {
     expect(site.contact.whatsapp).toBe(WHATSAPP_NUMBER);
   });
 
-  it("has three headline stats with the right figures", () => {
-    expect(stats).toHaveLength(3);
-    expect(stats.map((s) => s.value)).toEqual([100, 50, 99]);
+  it("has positioning propositions (not fabricated metrics)", () => {
+    expect(propositions.length).toBeGreaterThanOrEqual(3);
+    for (const p of propositions) {
+      expect(p.title.length).toBeGreaterThan(0);
+      expect(p.detail.length).toBeGreaterThan(0);
+    }
   });
 
   it("has VLSI (12) and Embedded (11) service pillars", () => {
@@ -37,20 +39,13 @@ describe("content", () => {
       }
   });
 
-  it("has two founders, the first being Muzammil, each with an image", () => {
-    expect(founders).toHaveLength(2);
-    expect(founders[0].name).toBe("Muzammil");
-    for (const f of founders) {
-      expect(f.image).toBeTruthy();
-      expect(f.name).toBeTruthy();
-    }
-  });
-
-  it("has capabilities, industries, process steps, locations, and a testimonial", () => {
+  it("has capabilities, industries, process steps, locations, and testimonials", () => {
     expect(capabilities.length).toBeGreaterThan(0);
     expect(industries.length).toBeGreaterThan(0);
     expect(processSteps.length).toBeGreaterThan(0);
-    expect(locations.length).toBe(3);
-    expect(testimonial.name).toMatch(/anika/i);
+    expect(locations.length).toBe(2);
+    expect(locations.map((l) => l.city)).toEqual(["Hyderabad", "Satupally"]);
+    expect(testimonials.length).toBeGreaterThanOrEqual(3);
+    expect(testimonials[0].name).toMatch(/anika/i);
   });
 });

@@ -22,14 +22,16 @@ export function validateContact(
 
 /** Compose a wa.me click-to-chat URL pre-filled with the enquiry. */
 export function buildWhatsAppUrl(f: ContactFields): string {
+  // WhatsApp renders *single-asterisk* spans as bold (double would show literal
+  // asterisks), so the headings below are wrapped in single asterisks.
   const lines = [
-    "New enquiry from the Chipzenix website",
+    "*New enquiry from the Chipzenix website*",
     "",
-    `Name: ${f.name}`,
-    `Email: ${f.email}`,
-    ...(f.company?.trim() ? [`Company: ${f.company}`] : []),
+    `*Name:* ${f.name}`,
+    `*Email:* ${f.email}`,
+    ...(f.company?.trim() ? [`*Company:* ${f.company}`] : []),
     "",
-    "Message:",
+    "*Message:*",
     f.message,
   ];
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
