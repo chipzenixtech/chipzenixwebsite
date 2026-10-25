@@ -41,27 +41,38 @@ npm run dev          # dev server at http://localhost:3000
 
 ```
 app/                 App Router routes (home, services, about, careers, contact)
+  services/[pillar]/[slug]/  15 statically generated VLSI + embedded domain pages
   layout.tsx         Root layout — metadata, JSON-LD, fonts, providers, nav, footer
   sitemap.ts         /sitemap.xml (force-static)
+  llms.txt/          /llms.txt brief for AI assistants (force-static)
   robots.ts          /robots.txt (force-static)
 components/
   layout/            PillNav, MobileMenu, Footer, PageHeader
-  sections/          Page sections (Hero, TrustStrip, Industries, Pillars, …)
-  ui/                Reusable UI (Propositions, SpotlightCard, Reveal, Button, …)
+  sections/          Page sections (Hero, AboutIntro, Expertise, DomainGrid, WhyChooseUs, …)
+  ui/                Reusable UI (ChipButton, Eyebrow, SpotlightCard, Reveal, Button, …)
   visual/            Canvas backgrounds (CircuitField, WaferField), GrainOverlay
   forms/             ContactForm (WhatsApp hand-off, no backend)
 lib/
   content.ts         Single source of truth for site copy & data
+  seo.ts             SITE_URL, share image, per-page metadata + JSON-LD helpers
+  theme.ts           Accent colour for canvas drawing
   fonts.ts           next/font definitions
   whatsapp.ts        WhatsApp deep-link builder
-  motion/            Lenis provider, hash navigation, reduced-motion hook
+  motion/            Lenis provider (incl. scroll reset on navigation), hash navigation,
+                     reduced-motion hook
 ```
 
 ## Content
 
 All copy and structured data live in `lib/content.ts` — there is no CMS. Sales/marketing
 edits are made there. Notably, the site uses **truthful positioning statements**
-(`propositions`) rather than fabricated metrics, since the company is pre-launch.
+rather than fabricated metrics, since the company is pre-launch. Service domains
+(`domains`) drive the cards and the generated `/services/[pillar]/[slug]` detail pages.
+
+The home page follows the client's change brief (Oct 2026): Hero (rotating photo slideshow) →
+About (mission & vision) → Domains of Expertise (VLSI / Embedded chip buttons) → VLSI Domains →
+Embedded Domains → Why choose us → Technology → Industries → FAQ → Contact. Visible copy uses no
+em dashes (a test enforces it).
 
 ## Contact
 

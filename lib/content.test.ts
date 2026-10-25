@@ -1,17 +1,25 @@
 import { describe, it, expect } from "vitest";
 import {
   site,
-  propositions,
-  pillars,
+  about,
+  mission,
+  vision,
+  domains,
+  domainsFor,
+  domainHref,
+  reasons,
   capabilities,
   industries,
   processSteps,
-  testimonials,
   locations,
+  heroSlides,
   faqs,
   pageSeo,
 } from "./content";
 import { WHATSAPP_NUMBER } from "./whatsapp";
+
+const visibleCopy = () =>
+  JSON.stringify({ site, about, mission, vision, domains, reasons, industries, faqs, pageSeo, heroSlides });
 
 describe("content", () => {
   it("carries the brand identity and WhatsApp contact", () => {
@@ -20,35 +28,61 @@ describe("content", () => {
     expect(site.contact.whatsapp).toBe(WHATSAPP_NUMBER);
   });
 
-  it("has positioning propositions (not fabricated metrics)", () => {
-    expect(propositions.length).toBeGreaterThanOrEqual(3);
-    for (const p of propositions) {
-      expect(p.title.length).toBeGreaterThan(0);
-      expect(p.detail.length).toBeGreaterThan(0);
+  it("uses the client's hero line, mission and vision", () => {
+    expect(site.heroIntro).toMatch(/^Innovating Silicon, Delivering Excellence, Building Lasting Connections/);
+    expect(mission).toMatch(/^Deliver innovative, reliable, and cost-effective engineering solutions/);
+    expect(vision).toMatch(/^To become a trusted global partner/);
+  });
+
+  it("has the deck's VLSI and embedded domains", () => {
+    expect(domainsFor("vlsi").map((d) => d.title)).toEqual([
+      "Analog Layout",
+      "Analog Circuit",
+      "Physical Design (PD)",
+      "RTL Design",
+      "Design Verification (DV)",
+      "Static Timing Analysis (STA)",
+      "Design for Testability (DFT)",
+    ]);
+    expect(domainsFor("embedded")).toHaveLength(8);
+  });
+
+  it("gives every domain a unique page with a write-up and capability lists", () => {
+    const hrefs = domains.map(domainHref);
+    expect(new Set(hrefs).size).toBe(domains.length);
+    for (const d of domains) {
+      expect(d.slug).toMatch(/^[a-z0-9-]+$/);
+      expect(d.intro.length).toBeGreaterThan(0);
+      expect(d.groups.length).toBeGreaterThan(0);
+      for (const g of d.groups) expect(g.items.length).toBeGreaterThan(0);
+      expect(d.pageTitle.length).toBeLessThanOrEqual(60);
+      expect(d.description.length).toBeGreaterThanOrEqual(110);
+      expect(d.description.length).toBeLessThanOrEqual(160);
     }
   });
 
-  it("has VLSI (12) and Embedded (11) service pillars", () => {
-    expect(pillars.find((p) => p.id === "vlsi")?.services).toHaveLength(12);
-    expect(pillars.find((p) => p.id === "embedded")?.services).toHaveLength(11);
+  it("lists all eight reasons to choose us, each with a one-liner", () => {
+    expect(reasons).toHaveLength(8);
+    for (const r of reasons) expect(r.detail.length).toBeGreaterThan(20);
   });
 
-  it("gives every service a name and description", () => {
-    for (const p of pillars)
-      for (const s of p.services) {
-        expect(s.name.length).toBeGreaterThan(0);
-        expect(s.description.length).toBeGreaterThan(0);
-      }
+  it("has a multi-image hero slideshow with alt text and captions", () => {
+    expect(heroSlides.length).toBeGreaterThanOrEqual(3);
+    for (const s of heroSlides) {
+      expect(s.alt.length).toBeGreaterThan(10);
+      expect(s.caption.length).toBeGreaterThan(0);
+    }
   });
 
-  it("has capabilities, industries, process steps, locations, and testimonials", () => {
+  it("keeps visible copy free of em dashes", () => {
+    expect(visibleCopy()).not.toContain("—");
+  });
+
+  it("has capabilities, industries, process steps and locations", () => {
     expect(capabilities.length).toBeGreaterThan(0);
     expect(industries.length).toBeGreaterThan(0);
     expect(processSteps.length).toBeGreaterThan(0);
-    expect(locations.length).toBe(2);
     expect(locations.map((l) => l.city)).toEqual(["Hyderabad", "Satupally"]);
-    expect(testimonials.length).toBeGreaterThanOrEqual(3);
-    expect(testimonials[0].name).toMatch(/anika/i);
   });
 
   it("has FAQ answers built from real content", () => {

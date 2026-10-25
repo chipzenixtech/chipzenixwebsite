@@ -20,7 +20,7 @@ export function Process() {
       <Reveal selector="[data-step]" className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {processSteps.map((s, i) => (
           <div data-step key={s.title} className="h-full">
-            <SpotlightCard topAccent className="h-full rounded-lg border border-border bg-surface p-7">
+            <SpotlightCard className="h-full rounded-lg border border-border bg-surface p-7">
               <div className="flex items-center justify-between">
                 <span className="font-mono text-2xl font-bold text-accent">
                   {String(i + 1).padStart(2, "0")}

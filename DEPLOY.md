@@ -43,8 +43,7 @@ Upload the contents of **`out/`** to any static host:
    headshots (drop new images in `public/` and update the `image` paths).
 3. **Real details.** Confirm the display email (`hello@chipzenix.com`) and phone in
    `lib/content.ts`. WhatsApp number is wired to **+91 96181 02268** (`wa.me/919618102268`).
-4. **Testimonials / roles.** The Anika Rao testimonial and the Careers roles are illustrative —
-   replace with real ones in `lib/content.ts` and `app/careers/page.tsx`.
+4. **Careers roles.** The roles in `app/careers/page.tsx` are illustrative; replace them with real openings.
 5. **Social links.** Add the LinkedIn/X URLs to `site.socials` in `lib/content.ts`; empty ones
    stay hidden in the footer and out of the structured data.
 
@@ -52,7 +51,7 @@ Upload the contents of **`out/`** to any static host:
 
 - **Contact form** has no backend by design: it composes the enquiry and opens WhatsApp to
   +91 96181 02268 with the message pre-filled (`lib/whatsapp.ts`).
-- **Imagery** in `public/images/` is brand-duotoned semiconductor photography from Wikimedia
+- **Imagery** in `public/images/` is semiconductor photography duotoned to the logo blue from Wikimedia
   Commons (CC-licensed). Replace with owned/licensed assets if preferred.
 - **Fonts** are self-hosted (Clash Display, General Sans via Fontshare; JetBrains Mono via Google)
   in `public/fonts/` — no external font requests at runtime.

@@ -1,20 +1,22 @@
 # Design
 
 Visual system for Chipzenix. The OKLCH tokens here are the single source of truth, implemented in
-`app/globals.css` (Tailwind v4 `@theme`). Identity is preserved from the existing logo (deep navy
-field + cyan→teal mark); colors below are derived from it, not invented.
+`app/globals.css` (Tailwind v4 `@theme`). Identity follows the current logo (white CHIPZENIX
+wordmark, blue orbit and gradient E bars on a deep navy field); colors below are sampled from it,
+not invented. The palette moved from the earlier cyan→teal set to the logo's blues on 2026-10-25.
 
 ## Vibe
 
-Deep-tech, precise, instrument-grade. A near-black navy field that stays calm so a single cyan
+Deep-tech, precise, instrument-grade. A near-black navy field that stays calm so a single azure
 signal carries the brand. Bold through scale and typographic confidence, not decoration. Reference
 points: the restraint of Vercel/Linear dark, the precision of a measurement instrument — but
 differentiated from generic dark-SaaS by engineered typography, real technical detail, and a
 circuit-trace motif drawn from the logo.
 
-**Color strategy:** Committed (disciplined). The dark field dominates; cyan is the decisive,
-sparing accent (interaction, key highlights, the circuit motif, restrained glow). Teal is a sibling
-used for gradients/depth in the motif and imagery — never as gradient *text*.
+**Color strategy:** Committed (disciplined). The dark field dominates; azure blue is the decisive,
+sparing accent (interaction, key highlights, the circuit motif, restrained glow). The logo's light
+blue is a sibling for gradients/depth in the motif — never as gradient *text*. Photography is
+duotoned to the same blue.
 
 ## Color (OKLCH — never hex in code)
 
@@ -29,14 +31,15 @@ used for gradients/depth in the motif and imagery — never as gradient *text*.
 | `--color-ink` | `oklch(0.97 0.012 235)` | Primary text (≥15:1 on bg) |
 | `--color-muted` | `oklch(0.75 0.020 240)` | Secondary text (≥4.5:1 on bg) |
 | `--color-faint` | `oklch(0.62 0.018 245)` | Tertiary/labels only (decorative, not body) |
-| `--color-accent` | `oklch(0.82 0.140 196)` | Cyan — the single brand accent |
-| `--color-accent-strong` | `oklch(0.76 0.150 198)` | Cyan hover/active |
-| `--color-accent-2` | `oklch(0.85 0.120 178)` | Teal — gradients/motif depth only |
-| `--color-accent-ink` | `oklch(0.15 0.020 250)` | Near-black text used ON cyan fills |
+| `--color-accent` | `oklch(0.71 0.165 246)` | Azure (≈`#2ea8ff`) — the single brand accent |
+| `--color-accent-strong` | `oklch(0.60 0.210 257)` | Logo azure (`#0278f9`) — hover/active |
+| `--color-accent-2` | `oklch(0.79 0.145 221)` | Logo light blue (`#02d0fc`) — gradients/motif depth only |
+| `--color-accent-ink` | `oklch(0.15 0.020 250)` | Near-black text used ON accent fills |
 | `--color-danger` | `oklch(0.68 0.190 25)` | Form errors only |
 
-Rules: text on cyan fills uses `--color-accent-ink` (cyan is L≥0.82, a pale fill → dark text reads
-crisp). Accent never carries body text on the dark field beyond links/labels. No gradient text
+Rules: text on accent fills uses `--color-accent-ink` (7:1 on the azure fill). Glows use
+`color-mix(in oklch, var(--color-accent) N%, transparent)`; canvases read `--accent-rgb`. Never
+hard-code accent values in components. Accent never carries body text on the dark field beyond links/labels. No gradient text
 (`background-clip:text`) anywhere — the logo gradient lives only in the logo image.
 
 ## Typography
@@ -71,7 +74,7 @@ Lenis smooth scroll + GSAP/ScrollTrigger. Exponential ease-out (power3/quart/exp
 Reveals **vary per section** (not one uniform fade); content is visible by default and only enhanced.
 Hero gets one orchestrated moment (circuit traces drawing in / subtle data pulse). Premium materials
 allowed sparingly: restrained glow on the accent, blur/mask on the motif. **Every animation has a
-`prefers-reduced-motion: reduce` fallback.** Native scrollbar hidden globally; a thin cyan
+`prefers-reduced-motion: reduce` fallback.** Native scrollbar hidden globally; a thin accent
 scroll-progress bar is the only visible scroll indicator.
 
 ## Imagery (mandatory — zero images is a bug)
@@ -87,8 +90,10 @@ scroll-progress bar is the only visible scroll indicator.
 
 ## Components
 
-Primitives: `Button` (primary = cyan fill + accent-ink text; ghost = hairline border), `SectionHeading`
-(eyebrow optional, used ≤ twice site-wide — never per-section), `TechChip` (mono, hairline, subtle
+Primitives: `Button` (primary = accent fill + accent-ink text; ghost = hairline border), `Eyebrow`
+(section label as open text between two fading hairlines — never a pill/badge), `SpotlightCard`
+(hover = slight lift, accent edge + soft glow, cursor spotlight; no top-line wipes), `ChipButton`
+(QFP-package domain entry whose pins and traces light up on hover), `TechChip` (mono, hairline, subtle
 surface), `StatCounter` (mono figures, counts up on reveal, final value shown under reduced-motion).
 Layout: sticky `Nav` (transparent→surface on scroll) with focus-trapped mobile drawer, `Footer`.
 Forms: accessible inputs on `--color-surface-2` with `--color-accent` focus ring; errors in

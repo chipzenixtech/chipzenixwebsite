@@ -8,7 +8,7 @@ export function Capabilities() {
   const { containerRef, trackRef } = useHorizontalScroll<HTMLDivElement, HTMLDivElement>();
 
   return (
-    <section className="border-y border-border bg-bg-deep">
+    <section id="technology" className="scroll-mt-24 border-y border-border bg-bg-deep">
       <div ref={containerRef} className="md:h-screen md:overflow-hidden">
         <div
           ref={trackRef}
@@ -17,14 +17,14 @@ export function Capabilities() {
           {/* Intro panel */}
           <div className="flex w-[82vw] max-w-md shrink-0 snap-start flex-col justify-center md:w-[34vw]">
             <p className="font-label text-xs uppercase tracking-[0.16em] text-accent">
-              Capabilities
+              Technology
             </p>
             <h2 className="mt-4 text-[clamp(2.25rem,5vw,3.75rem)] font-semibold text-ink">
               The tech arsenal
             </h2>
             <p className="mt-4 max-w-sm text-muted">
               The languages, methodologies, tools, and architectures our engineers work in
-              every day — front-end to signoff, bare-metal to Linux.
+              every day, from front-end to signoff and bare-metal to Linux.
             </p>
             <p className="mt-6 font-label text-xs uppercase tracking-[0.14em] text-faint md:hidden">
               Swipe to explore →

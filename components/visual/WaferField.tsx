@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { accentRgb } from "@/lib/theme";
 
-const ACCENT = "0, 223, 226"; // --color-accent
 
 /**
  * A wafer-lattice background: a dot grid with two slow diagonal "data sweeps"
@@ -15,6 +15,7 @@ export function WaferField({ className = "" }: { className?: string }) {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    const ACCENT = accentRgb(); // follows --accent-rgb in globals.css
     const node = ref.current;
     if (!node) return;
     const context = node.getContext("2d");

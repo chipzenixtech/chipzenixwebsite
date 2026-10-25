@@ -19,8 +19,8 @@ export function Industries() {
             Industries we <span className="text-accent">ship into</span>
           </h2>
           <p className="mx-auto mt-4 text-lg leading-relaxed text-muted">
-            Our VLSI, embedded, and AI-hardware work powers products across
-            performance-critical, regulated industries.
+            Our VLSI and embedded engineering powers products across these
+            performance-critical sectors.
           </p>
         </Reveal>
 
@@ -35,7 +35,7 @@ export function Industries() {
               </span>
               <span
                 aria-hidden
-                className="h-1.5 w-1.5 shrink-0 bg-accent transition-all duration-300 group-hover:scale-150 group-hover:shadow-[0_0_8px_1px_rgba(0,223,226,0.7)]"
+                className="h-1.5 w-1.5 shrink-0 bg-accent transition-all duration-300 group-hover:scale-150 group-hover:shadow-[0_0_8px_1px_color-mix(in_oklch,var(--color-accent)_70%,transparent)]"
               />
               <span className="text-base text-muted transition-all duration-300 group-hover:translate-x-1 group-hover:text-ink sm:text-lg">
                 {name}

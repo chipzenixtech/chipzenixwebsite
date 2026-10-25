@@ -12,7 +12,7 @@ export const metadata: Metadata = pageMetadata("/careers", pageSeo.careers);
 
 const values = [
   { title: "Craft over volume", body: "We take fewer projects and do them properly. Quality is the brand." },
-  { title: "Ownership, end to end", body: "Engineers own their blocks from spec to signoff — and the decisions in between." },
+  { title: "Ownership, end to end", body: "Engineers own their blocks from spec to signoff, and the decisions in between." },
   { title: "Teach and be taught", body: "Reviews are how we level up. Strong opinions, held loosely, backed by data." },
   { title: "Remote-friendly", body: "Hybrid across our Telangana centres, asynchronous by default, synchronous when it matters." },
 ];
@@ -43,7 +43,7 @@ export default function CareersPage() {
           <Reveal selector="[data-val]" className="grid gap-4 sm:grid-cols-2">
             {values.map((v) => (
               <div data-val key={v.title} className="h-full">
-                <SpotlightCard topAccent className="h-full rounded-lg border border-border bg-surface p-8">
+                <SpotlightCard className="h-full rounded-lg border border-border bg-surface p-8">
                   <h2 className="text-xl font-semibold text-ink">{v.title}</h2>
                   <p className="mt-3 text-sm leading-relaxed text-muted">{v.body}</p>
                 </SpotlightCard>
@@ -59,7 +59,7 @@ export default function CareersPage() {
           <Reveal className="max-w-2xl">
             <h2 className="text-3xl font-semibold text-ink sm:text-4xl">Open roles</h2>
             <p className="mt-4 text-muted">
-              Don&rsquo;t see your exact role? Reach out anyway — we&rsquo;re always glad to meet
+              Don&rsquo;t see your exact role? Reach out anyway. We&rsquo;re always glad to meet
               strong engineers.
             </p>
           </Reveal>

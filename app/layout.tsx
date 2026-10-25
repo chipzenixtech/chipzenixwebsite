@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   ...home,
   metadataBase: new URL(SITE_URL),
   // subpages pass a plain title; this frames it as "Services — Chipzenix"
-  title: { default: pageSeo.home.title, template: `%s — ${site.name}` },
+  title: { default: pageSeo.home.title, template: `%s | ${site.name}` },
   applicationName: site.name,
   creator: site.name,
   publisher: site.name,

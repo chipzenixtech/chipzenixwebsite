@@ -71,7 +71,7 @@ export function SplashScreen() {
       <div
         aria-hidden="true"
         className="pointer-events-none absolute h-80 w-80 rounded-full"
-        style={{ background: "radial-gradient(circle, rgba(0,223,226,0.14), transparent 65%)" }}
+        style={{ background: "radial-gradient(circle, color-mix(in oklch, var(--color-accent) 14%, transparent), transparent 65%)" }}
       />
       <Image
         data-splash-mark

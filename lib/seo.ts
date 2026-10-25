@@ -1,5 +1,15 @@
 import type { Metadata } from "next";
-import { site, pillars, locations, faqs, type PageSeo } from "./content";
+import {
+  site,
+  locations,
+  faqs,
+  domains,
+  domainPillars,
+  domainsFor,
+  domainHref,
+  type Domain,
+  type PageSeo,
+} from "./content";
 
 /**
  * Canonical origin. Vercel serves the site on www and 308-redirects the apex
@@ -13,7 +23,7 @@ export const OG_IMAGE = {
   width: 1200,
   height: 630,
   type: "image/jpeg",
-  alt: `${site.name} — ${site.tagline}`,
+  alt: `${site.name}: ${site.tagline}`,
 };
 
 export const LOGO_URL = `${SITE_URL}/brand/chipzenix-logo-square.png`;
@@ -28,7 +38,7 @@ const socialProfiles = Object.values(site.socials).filter(Boolean);
  * OpenGraph/Twitter card (so a shared /about link previews as About, not Home).
  */
 export function pageMetadata(path: string, seo: PageSeo, opts: { absoluteTitle?: boolean } = {}): Metadata {
-  const shareTitle = opts.absoluteTitle ? seo.title : `${seo.title} — ${site.name}`;
+  const shareTitle = opts.absoluteTitle ? seo.title : `${seo.title} | ${site.name}`;
   return {
     title: opts.absoluteTitle ? { absolute: seo.title } : seo.title,
     description: seo.description,
@@ -87,31 +97,34 @@ export const siteJsonLd = {
       knowsAbout: [
         "Semiconductor engineering",
         "VLSI design",
-        "ASIC design",
-        "RTL design",
-        "Functional verification",
-        "UVM",
-        "Design for testability",
+        "ASIC and SoC design",
+        "Analog and mixed-signal IC design",
+        "Analog layout",
         "Physical design",
+        "RTL design",
+        "Design verification",
+        "UVM",
         "Static timing analysis",
-        "Analog and mixed-signal design",
-        "FPGA design",
+        "Design for testability",
+        "Advanced process nodes",
         "Embedded systems",
+        "Embedded firmware",
         "Embedded Linux",
         "RTOS",
-        "RISC-V",
-        "AI hardware acceleration",
+        "AUTOSAR",
+        "IoT and edge computing",
+        "Embedded AI",
       ],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Semiconductor engineering services",
-        itemListElement: pillars.map((p) => ({
+        itemListElement: Object.values(domainPillars).map((p) => ({
           "@type": "OfferCatalog",
-          name: p.title,
-          description: p.description,
-          itemListElement: p.services.map((s) => ({
+          name: p.label,
+          description: p.heading,
+          itemListElement: domainsFor(p.id).map((d) => ({
             "@type": "Offer",
-            itemOffered: { "@type": "Service", name: s.name, description: s.description, provider: { "@id": ORG_ID } },
+            itemOffered: { "@id": `${SITE_URL}${domainHref(d)}/#service` },
           })),
         })),
       },
@@ -128,10 +141,28 @@ export const siteJsonLd = {
   ],
 };
 
-/** WebPage + breadcrumb for a route; `name` is the crumb label. */
-export function pageJsonLd(path: string, name: string, seo: PageSeo) {
-  const url = `${SITE_URL}${path === "/" ? "/" : `${path}/`}`;
-  const crumbs = [{ name: "Home", url: `${SITE_URL}/` }, ...(path === "/" ? [] : [{ name, url }])];
+const absolute = (path: string) => {
+  const [p, hash] = path.split("#");
+  const base = `${SITE_URL}${p === "/" ? "/" : `${p}/`}`;
+  return hash ? `${base}#${hash}` : base;
+};
+
+/**
+ * WebPage + breadcrumb for a route. `name` is this page's crumb label; `parents`
+ * are the crumbs between Home and this page.
+ */
+export function pageJsonLd(
+  path: string,
+  name: string,
+  seo: PageSeo,
+  parents: { name: string; path: string }[] = [],
+) {
+  const url = absolute(path);
+  const crumbs = [
+    { name: "Home", url: `${SITE_URL}/` },
+    ...parents.map((c) => ({ name: c.name, url: absolute(c.path) })),
+    ...(path === "/" ? [] : [{ name, url }]),
+  ];
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -170,3 +201,35 @@ export const faqJsonLd = {
     acceptedAnswer: { "@type": "Answer", text: f.answer },
   })),
 };
+
+/** Service schema for a domain detail page, linked to the organization. */
+export function serviceJsonLd(d: Domain) {
+  const url = absolute(domainHref(d));
+  return {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "@id": `${url}#service`,
+    name: d.pageTitle,
+    serviceType: d.title,
+    description: d.description,
+    url,
+    category: domainPillars[d.pillar].label,
+    provider: { "@id": ORG_ID },
+    areaServed: "Worldwide",
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: d.pageTitle,
+      itemListElement: d.groups.map((g) => ({
+        "@type": "OfferCatalog",
+        name: g.title,
+        itemListElement: g.items.map((item) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: item },
+        })),
+      })),
+    },
+  };
+}
+
+/** Every domain detail page, for the sitemap and llms.txt. */
+export const domainPages = domains.map((d) => ({ domain: d, path: domainHref(d) }));

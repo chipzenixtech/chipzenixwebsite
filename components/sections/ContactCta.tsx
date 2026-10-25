@@ -14,11 +14,11 @@ export function ContactCta() {
             Let&rsquo;s build your next chip
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-lg text-muted">
-            Tell us what you&rsquo;re designing. We&rsquo;ll come back — usually within a day — with
+            Tell us what you&rsquo;re designing. We&rsquo;ll usually come back within a day with
             how we&rsquo;d de-risk and accelerate it.
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">
-            <Button href="/contact">Start a project</Button>
+            <Button href="/contact">Contact Us</Button>
             <Button href={wa} external variant="ghost">
               Message us on WhatsApp
             </Button>

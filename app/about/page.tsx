@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { pageSeo, mission, vision, locations } from "@/lib/content";
+import { pageSeo, about, locations } from "@/lib/content";
 import { pageJsonLd, pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
-import { Propositions } from "@/components/ui/Propositions";
+import { MissionVision } from "@/components/sections/AboutIntro";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ContactCta } from "@/components/sections/ContactCta";
 
@@ -16,22 +17,19 @@ export default function AboutPage() {
     <main>
       <JsonLd data={pageJsonLd("/about", "About", pageSeo.about)} />
       <PageHeader
-        kicker="About"
-        title="People who take silicon seriously"
-        intro="Chipzenix is a semiconductor and embedded engineering team built around one idea: hard silicon problems deserve engineers who sweat the details."
+        kicker={about.kicker}
+        title={
+          <>
+            {about.title} <span className="text-accent">{about.titleAccent}</span>
+          </>
+        }
+        intro={about.body}
       />
 
       {/* Mission & Vision */}
       <section className="border-b border-border">
-        <div className="mx-auto grid max-w-7xl gap-12 px-5 py-20 sm:px-8 sm:py-28 lg:grid-cols-2">
-          <Reveal>
-            <h2 className="font-label text-xs uppercase tracking-[0.16em] text-accent">Mission</h2>
-            <p className="mt-4 text-2xl font-medium leading-snug text-ink">{mission}</p>
-          </Reveal>
-          <Reveal>
-            <h2 className="font-label text-xs uppercase tracking-[0.16em] text-accent">Vision</h2>
-            <p className="mt-4 text-2xl font-medium leading-snug text-ink">{vision}</p>
-          </Reveal>
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
+          <MissionVision />
         </div>
       </section>
 
@@ -47,27 +45,14 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-gradient-to-t from-bg-deep via-bg-deep/30 to-transparent" />
       </section>
 
-      {/* How we work */}
-      <section className="border-b border-border">
-        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-24">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <h2 className="text-3xl font-semibold text-ink sm:text-4xl">How we work</h2>
-            <p className="mx-auto mt-4 text-muted">
-              Full ownership of hard silicon problems — from architecture to signoff.
-            </p>
-          </Reveal>
-          <div className="mt-12">
-            <Propositions />
-          </div>
-        </div>
-      </section>
+      <WhyChooseUs />
 
       {/* Locations */}
       <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
           <Reveal className="max-w-2xl">
             <h2 className="text-3xl font-semibold text-ink sm:text-4xl">Where we work</h2>
-            <p className="mt-4 text-muted">Two engineering centres in Telangana, one accountable team.</p>
+            <p className="mt-4 text-muted">Two engineering centres in Telangana, India.</p>
           </Reveal>
           <Reveal selector="[data-loc]" className="mt-12 grid gap-4 sm:grid-cols-2">
             {locations.map((l) => (

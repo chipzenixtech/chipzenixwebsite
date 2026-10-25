@@ -13,7 +13,10 @@ fully static. See `README.md` for the full overview. Key rules when working here
   and data. Don't hardcode marketing text in components. Tests in `lib/content.test.ts`
   guard its shape.
 - **No fabricated metrics.** The company is pre-launch. Use truthful positioning
-  (`propositions`), not invented stats (projects/engineers/satisfaction %).
+  (`reasons`, `domains`), not invented stats (projects/engineers/satisfaction %) or
+  testimonials. Visible copy has no em dashes (client preference; a test enforces it).
+- **Services:** each entry in `domains` (content.ts) is a card plus a statically
+  generated page at `/services/<vlsi|embedded>/<slug>`; add a domain there, not a page file.
 - **Static export only.** `next.config.ts` uses `output: "export"`; there is no server
   runtime. No server actions, route handlers with dynamic behaviour, or
   `next/image` optimization (images are `unoptimized`). `npm run build` emits `out/`.
@@ -28,8 +31,13 @@ fully static. See `README.md` for the full overview. Key rules when working here
     `prefers-reduced-motion`.
   - Use `gsap.fromTo` (never `gsap.from`) for reveals so content can't get stuck at
     `opacity: 0`. Smooth scroll is Lenis with `lerp: 0.1`.
-- **Brand styling:** accent is greenish-blue cyan (`--color-accent`, `#00dfe2`); label
-  text uses the Chakra Petch font (`font-label`).
+- **Brand styling:** accent is the new logo's azure blue (`--color-accent`, ≈`#2ea8ff`,
+  adopted 2026-10-25; the previous cyan values are noted in `globals.css`). Never
+  hard-code accent colours: use the tokens, `color-mix(in oklch, var(--color-accent) N%,
+  transparent)` for glows, and `--accent-rgb`/`accentRgb()` for canvas. Hero photos are
+  duotoned to the same blue. Label text uses Chakra Petch (`font-label`); section labels
+  use `<Eyebrow>` (no pill badges) and card hovers use `SpotlightCard` (lift + edge glow,
+  no top-line wipes).
 - **SEO:** keep per-page metadata + canonicals, the layout's `Organization`/`WebSite`
   JSON-LD, and `sitemap.ts`/`robots.ts`/`llms.txt` in sync when routes change. The origin
   is `SITE_URL` in `lib/seo.ts` (`https://www.chipzenix.com`, live on Vercel); page

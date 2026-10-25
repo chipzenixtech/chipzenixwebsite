@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { gsap } from "gsap";
-import { navLinks } from "@/lib/content";
+import { navCta, navLinks } from "@/lib/content";
 import { handleHashNav } from "@/lib/motion/hashNav";
 import { MobileMenu } from "./MobileMenu";
 
@@ -206,11 +206,11 @@ export function PillNav() {
             })}
           </ul>
           <Link
-            href="/contact"
+            href={navCta.href}
             prefetch={false}
             className="inline-flex items-center rounded-full bg-accent px-5 py-2.5 font-label text-xs font-semibold uppercase tracking-[0.1em] text-accent-ink transition-colors hover:bg-accent-strong"
           >
-            Start a project
+            {navCta.label}
           </Link>
         </div>
 

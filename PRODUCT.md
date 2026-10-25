@@ -54,7 +54,7 @@ Explicitly NOT:
 2. **Show capability, don't claim it.** Concrete specs, real flows, tangible detail over adjectives.
    An engineer trusts evidence, not marketing.
 3. **Confident restraint.** One decisive idea per fold; bold via scale and clarity, never via noise.
-   The dark field stays calm so the cyan signal means something.
+   The dark field stays calm so the blue signal means something.
 4. **Engineer-credible voice.** Authentic technical language; mono used only for real data/specs
    (where it's true to the domain), never as decoration.
 5. **Trust is the conversion.** Every section ladders toward "these people are serious and

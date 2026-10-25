@@ -17,7 +17,7 @@ export default function ContactPage() {
       <PageHeader
         kicker="Contact"
         title="Start a project"
-        intro="Tell us what you're designing. We'll come back — usually within a day — with how we'd de-risk and accelerate it."
+        intro="Tell us what you're designing. We'll usually come back within a day with how we'd de-risk and accelerate it."
       />
 
       <section className="border-b border-border">
@@ -53,7 +53,7 @@ export default function ContactPage() {
                 {locations.map((l) => (
                   <li key={l.city}>
                     <span className="text-ink">{l.city}</span>
-                    <span className="text-muted"> — {l.role ?? l.region}</span>
+                    <span className="text-muted"> · {l.role ?? l.region}</span>
                   </li>
                 ))}
               </ul>

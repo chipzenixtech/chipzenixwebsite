@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import { accentRgb } from "@/lib/theme";
 
 type Pt = { x: number; y: number };
 type Trace = { pts: Pt[]; len: number; alpha: number; live: boolean };
 type Pulse = { trace: number; t: number; speed: number };
 
-const ACCENT = "0, 223, 226"; // matches --color-accent (#00dfe2)
 const GRID = 40; // px — wafer/PCB pad pitch
 
 /**
@@ -26,6 +26,7 @@ export function CircuitField({ className = "" }: { className?: string }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
+    const ACCENT = accentRgb(); // follows --accent-rgb in globals.css
     const canvasNode = canvasRef.current;
     if (!canvasNode) return;
     const context = canvasNode.getContext("2d");

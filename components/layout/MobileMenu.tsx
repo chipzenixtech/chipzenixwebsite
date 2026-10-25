@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRef } from "react";
-import { navLinks } from "@/lib/content";
+import { navCta, navLinks } from "@/lib/content";
 import { handleHashNav } from "@/lib/motion/hashNav";
 import { Button } from "@/components/ui/Button";
 
@@ -64,8 +64,8 @@ export function MobileMenu() {
           </nav>
 
           <div className="mt-auto">
-            <Button href="/contact" className="w-full" onClick={close}>
-              Start a project
+            <Button href={navCta.href} className="w-full" onClick={close}>
+              {navCta.label}
             </Button>
           </div>
         </div>

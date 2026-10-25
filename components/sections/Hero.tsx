@@ -1,11 +1,11 @@
 "use client";
 
 import { useRef } from "react";
-import Image from "next/image";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { Button } from "@/components/ui/Button";
 import { CircuitField } from "@/components/visual/CircuitField";
+import { HeroVisual } from "@/components/sections/HeroVisual";
 import { usePrefersReducedMotion } from "@/lib/motion/usePrefersReducedMotion";
 import { site } from "@/lib/content";
 
@@ -44,13 +44,14 @@ export function Hero() {
 
       <div
         ref={root}
-        className="relative mx-auto grid w-full max-w-7xl items-center gap-14 px-5 pb-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr]"
+        className="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-5 pb-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16"
       >
         <div>
           <p
             data-hero
-            className="font-label text-xs uppercase tracking-[0.18em] text-accent sm:text-sm"
+            className="flex items-center gap-2.5 font-label text-sm uppercase tracking-[0.18em] text-accent sm:text-base"
           >
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_2px_color-mix(in_oklch,var(--color-accent)_55%,transparent)]" />
             Semiconductor Engineering Services
           </p>
           <h1
@@ -65,39 +66,21 @@ export function Hero() {
             data-hero
             className="mt-7 max-w-xl text-lg leading-relaxed text-muted sm:text-xl"
           >
-            {site.intro}
+            {site.heroIntro}
           </p>
           <div data-hero className="mt-9 flex flex-wrap gap-4">
-            <Button href="/contact">Start a project</Button>
-            <Button href="/services" variant="ghost">
-              Explore services
+            <Button href="/services">
+              Explore Services
+              <span aria-hidden="true">&rarr;</span>
+            </Button>
+            <Button href="/contact" variant="ghost">
+              Contact Us
             </Button>
           </div>
         </div>
 
-        <div data-hero className="relative hidden lg:block">
-          <div
-            aria-hidden="true"
-            className="absolute -inset-8 -z-10"
-            style={{
-              background:
-                "radial-gradient(circle at 50% 45%, rgba(0,223,226,0.18), transparent 62%)",
-            }}
-          />
-          <figure className="relative aspect-[4/5] overflow-hidden rounded-lg border border-border-strong">
-            <Image
-              src="/images/die.webp"
-              alt="Macro photograph of an integrated-circuit die with fine gold bond wires"
-              fill
-              priority
-              sizes="(min-width:1024px) 42vw, 100vw"
-              className="object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-bg-deep/80 via-transparent to-bg-deep/20" />
-            <figcaption className="absolute bottom-4 left-4 font-mono text-xs text-ink/90">
-              // silicon die · post-bond inspection
-            </figcaption>
-          </figure>
+        <div data-hero>
+          <HeroVisual />
         </div>
       </div>
     </section>

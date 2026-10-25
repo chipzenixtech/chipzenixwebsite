@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { navLinks, site, locations } from "@/lib/content";
+import { navCta, navLinks, site, locations } from "@/lib/content";
 
 const socials = [
   { label: "LinkedIn", href: site.socials.linkedin },
@@ -43,7 +43,7 @@ export function Footer() {
 
         <nav aria-label="Footer" className="flex flex-col gap-3">
           <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-faint">Navigate</h2>
-          {navLinks.map((l) => (
+          {[...navLinks, { label: "Careers", href: "/careers" }, navCta].map((l) => (
             <Link
               key={l.href}
               href={l.href}

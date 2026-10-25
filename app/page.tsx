@@ -1,11 +1,10 @@
 import { Hero } from "@/components/sections/Hero";
-import { TrustStrip } from "@/components/sections/TrustStrip";
-import { Industries } from "@/components/sections/Industries";
-import { Pillars } from "@/components/sections/Pillars";
+import { AboutIntro } from "@/components/sections/AboutIntro";
+import { Expertise } from "@/components/sections/Expertise";
+import { DomainGrid } from "@/components/sections/DomainGrid";
+import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { Capabilities } from "@/components/sections/Capabilities";
-import { Process } from "@/components/sections/Process";
-import { Testimonial } from "@/components/sections/Testimonial";
-import { Teasers } from "@/components/sections/Teasers";
+import { Industries } from "@/components/sections/Industries";
 import { Faq } from "@/components/sections/Faq";
 import { ContactCta } from "@/components/sections/ContactCta";
 import { JsonLd } from "@/components/JsonLd";
@@ -17,13 +16,13 @@ export default function Home() {
     <main>
       <JsonLd data={pageJsonLd("/", "Home", pageSeo.home)} />
       <Hero />
-      <TrustStrip />
-      <Industries />
-      <Pillars />
+      <AboutIntro />
+      <Expertise />
+      <DomainGrid pillar="vlsi" />
+      <DomainGrid pillar="embedded" />
+      <WhyChooseUs />
       <Capabilities />
-      <Process />
-      <Testimonial />
-      <Teasers />
+      <Industries />
       <Faq />
       <ContactCta />
     </main>
