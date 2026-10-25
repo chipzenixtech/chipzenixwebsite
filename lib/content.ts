@@ -15,6 +15,8 @@ export type ProcessStep = { title: string; description: string };
 export type Location = { city: string; region: string; role?: string };
 export type Testimonial = { quote: string; name: string; title: string };
 export type NavLink = { label: string; href: string };
+export type Faq = { question: string; answer: string };
+export type PageSeo = { title: string; description: string; keywords?: string[] };
 
 // ── Site / contact ───────────────────────────────────────────────────────────
 export const site = {
@@ -27,6 +29,12 @@ export const site = {
     whatsapp: WHATSAPP_NUMBER,
     whatsappDisplay: "+91 96181 02268",
     email: "hello@chipzenix.com",
+  },
+  // Profile URLs. Leave a value empty until the account exists: empty links are
+  // hidden in the footer and left out of the structured data.
+  socials: {
+    linkedin: "",
+    x: "",
   },
 } as const;
 
@@ -167,3 +175,103 @@ export const locations: Location[] = [
   { city: "Hyderabad", region: "Telangana, India", role: "Headquarters" },
   { city: "Satupally", region: "Telangana, India", role: "Engineering centre" },
 ];
+
+// ── FAQ (visible on the home page + FAQPage structured data) ─────────────────
+// Answers are assembled from the data above so they can never drift from it.
+const list = (items: string[]) =>
+  items.length > 1 ? `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}` : items[0];
+const serviceNames = (id: string) =>
+  pillars.find((p) => p.id === id)?.services.map((s) => s.name) ?? [];
+const capabilityItems = (category: string) =>
+  capabilities.find((c) => c.category === category)?.items ?? [];
+
+export const faqs: Faq[] = [
+  {
+    question: "What does Chipzenix do?",
+    answer: `${site.intro} VLSI/ASIC design and embedded systems sit under one roof, with one accountable team.`,
+  },
+  {
+    question: "Which VLSI and ASIC design services does Chipzenix offer?",
+    answer: `${list(serviceNames("vlsi"))} — the full flow from RTL to tapeout.`,
+  },
+  {
+    question: "What embedded systems engineering does Chipzenix take on?",
+    answer: `${list(serviceNames("embedded"))} — firmware, drivers, and hardware for connected products.`,
+  },
+  {
+    question: "Which industries does Chipzenix work with?",
+    answer: `${list(industries)}.`,
+  },
+  {
+    question: "Which EDA tools and languages do your engineers use?",
+    answer: `EDA tools: ${list(capabilityItems("EDA Tools"))}. Languages and HDLs: ${list(capabilityItems("Languages & HDLs"))}. Verification is built on ${list(capabilityItems("Verification"))}.`,
+  },
+  {
+    question: "Where is Chipzenix located?",
+    answer: `${locations.map((l) => `${l.city} (${l.role?.toLowerCase()})`).join(" and ")}, both in Telangana, India.`,
+  },
+  {
+    question: "How does an engagement with Chipzenix work?",
+    answer: `Four stages: ${processSteps.map((s, i) => `${i + 1}. ${s.title} — ${s.description}`).join(" ")}`,
+  },
+  {
+    question: "How do I start a project with Chipzenix?",
+    answer: `Message us on WhatsApp at ${site.contact.whatsappDisplay}, or fill in the contact form, which opens WhatsApp with your enquiry ready to send. Tell us what you're designing — we usually come back within a day.`,
+  },
+];
+
+// ── Per-page search & share copy ─────────────────────────────────────────────
+// Titles stay under ~60 characters and descriptions under ~160 so search results
+// and WhatsApp/Telegram/LinkedIn link previews show them in full.
+export const pageSeo = {
+  home: {
+    title: "Chipzenix — VLSI, ASIC & Embedded Systems Engineering",
+    description:
+      "Semiconductor engineering partner for VLSI & ASIC design, verification, physical design and embedded systems — from RTL to tapeout. Hyderabad, India.",
+    keywords: [
+      "semiconductor engineering services",
+      "VLSI design services",
+      "ASIC design company",
+      "embedded systems engineering",
+      "RTL design",
+      "UVM verification",
+      "physical design",
+      "DFT",
+      "static timing analysis",
+      "embedded firmware",
+      "AI hardware acceleration",
+      "VLSI company Hyderabad",
+    ],
+  },
+  services: {
+    title: "VLSI, ASIC & Embedded Engineering Services",
+    description:
+      "RTL design, UVM verification, DFT, physical design, STA, analog/mixed-signal and FPGA — plus embedded firmware, Linux, RTOS and drivers. One accountable team.",
+    keywords: [
+      "RTL design services",
+      "functional verification services",
+      "physical design services",
+      "DFT services",
+      "analog mixed-signal design",
+      "FPGA design services",
+      "embedded Linux development",
+      "RTOS firmware development",
+      "device driver development",
+    ],
+  },
+  about: {
+    title: "About Us",
+    description:
+      "Semiconductor and embedded engineering team in Hyderabad and Satupally, Telangana, built for hard silicon problems — architecture to signoff, under one roof.",
+  },
+  careers: {
+    title: "Careers in VLSI & Embedded Engineering",
+    description:
+      "Join Chipzenix: VLSI, verification, physical design and embedded engineering roles in Hyderabad and Satupally, Telangana. Remote-friendly.",
+    keywords: ["VLSI jobs Hyderabad", "embedded engineer jobs", "verification engineer jobs", "physical design jobs"],
+  },
+  contact: {
+    title: "Contact — Start a Project",
+    description: `Start a VLSI, ASIC or embedded engineering project with Chipzenix. Message us on WhatsApp at ${site.contact.whatsappDisplay} — we usually reply within a day.`,
+  },
+} satisfies Record<string, PageSeo>;

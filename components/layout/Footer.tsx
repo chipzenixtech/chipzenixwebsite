@@ -3,9 +3,9 @@ import Image from "next/image";
 import { navLinks, site, locations } from "@/lib/content";
 
 const socials = [
-  { label: "LinkedIn", href: "#" },
-  { label: "X", href: "#" },
-];
+  { label: "LinkedIn", href: site.socials.linkedin },
+  { label: "X", href: site.socials.x },
+].filter((s) => s.href);
 
 export function Footer() {
   const year = new Date().getFullYear();
@@ -18,22 +18,27 @@ export function Footer() {
           <Link
             href="/"
             prefetch={false}
-            className="flex items-center gap-2.5"
+            className="inline-flex"
             aria-label="Chipzenix home"
           >
-            <Image src="/logo-icon.webp" alt="" width={36} height={36} className="h-9 w-9" />
-            <span className="text-lg font-semibold tracking-tight text-ink">
-              Chip<span className="text-accent">zenix</span>
-            </span>
+            <Image src="/logo.webp" alt="Chipzenix" width={720} height={325} className="h-16 w-auto" />
           </Link>
           <p className="mt-4 max-w-xs text-sm text-muted">{site.taglineLong}</p>
-          <div className="mt-6 flex gap-4 font-mono text-xs text-muted">
-            {socials.map((s) => (
-              <a key={s.label} href={s.href} className="transition-colors hover:text-accent">
-                {s.label}
-              </a>
-            ))}
-          </div>
+          {socials.length > 0 && (
+            <div className="mt-6 flex gap-4 font-mono text-xs text-muted">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="transition-colors hover:text-accent"
+                >
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
 
         <nav aria-label="Footer" className="flex flex-col gap-3">

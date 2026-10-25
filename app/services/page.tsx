@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { pageSeo, pillars } from "@/lib/content";
+import { pageJsonLd, pageMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ContactCta } from "@/components/sections/ContactCta";
-import { pillars } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "VLSI & ASIC design and embedded systems engineering services from Chipzenix — RTL to tapeout, firmware to the field.",
-  alternates: { canonical: "/services" },
-};
+export const metadata: Metadata = pageMetadata("/services", pageSeo.services);
 
 export default function ServicesPage() {
   return (
     <main>
+      <JsonLd data={pageJsonLd("/services", "Services", pageSeo.services)} />
       <PageHeader
         kicker="Services"
         title="Full-stack silicon engineering"

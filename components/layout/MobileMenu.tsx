@@ -33,9 +33,8 @@ export function MobileMenu() {
       >
         <div className="flex h-dvh w-full flex-col p-6">
           <div className="flex items-center justify-between">
-            <span className="font-mono text-xs uppercase tracking-[0.2em] text-accent">
-              Chipzenix
-            </span>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.webp" alt="Chipzenix" width={720} height={325} className="h-12 w-auto" />
             <button
               onClick={close}
               aria-label="Close menu"

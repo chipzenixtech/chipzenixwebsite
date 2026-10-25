@@ -1,21 +1,19 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { pageSeo, site, locations } from "@/lib/content";
+import { pageJsonLd, pageMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { ContactForm } from "@/components/forms/ContactForm";
-import { site, locations } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Start a semiconductor or embedded engineering project with Chipzenix. Message us on WhatsApp or send an enquiry.",
-  alternates: { canonical: "/contact" },
-};
+export const metadata: Metadata = pageMetadata("/contact", pageSeo.contact);
 
 export default function ContactPage() {
   const wa = `https://wa.me/${site.contact.whatsapp}`;
 
   return (
     <main>
+      <JsonLd data={pageJsonLd("/contact", "Contact", pageSeo.contact)} />
       <PageHeader
         kicker="Contact"
         title="Start a project"

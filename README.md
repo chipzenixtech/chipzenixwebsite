@@ -84,11 +84,16 @@ composes a pre-filled WhatsApp message — there is no server-side form handling
 - Per-page metadata (title template, description, keywords) and canonicals.
 - OpenGraph + Twitter cards, brand favicon, and a generated OG image.
 - `Organization` + `WebSite` JSON-LD structured data in the root layout.
-- `sitemap.xml` and `robots.txt` covering all routes.
+- `sitemap.xml` and `robots.txt` covering all routes; AI crawlers explicitly allowed.
+- `/llms.txt` — a plain-Markdown brief for AI assistants, generated from `lib/content.ts`.
+- Visible FAQ on the home page with matching `FAQPage` JSON-LD; `WebPage` + breadcrumb
+  JSON-LD on every route.
+- All of it is driven by `lib/seo.ts` (`SITE_URL`, share image, per-page metadata helper)
+  and the `pageSeo` / `faqs` copy in `lib/content.ts`.
 
-> **Before launch:** update `SITE_URL` in `app/layout.tsx` and `BASE` in
-> `app/sitemap.ts` / `app/robots.ts` from the placeholder `https://chipzenix.com`
-> to the real production domain.
+The site is live at **https://www.chipzenix.com** (Vercel; the apex domain redirects to
+www). If the primary domain ever changes, update `SITE_URL` in `lib/seo.ts` only.
+
 
 ## Build & deploy
 

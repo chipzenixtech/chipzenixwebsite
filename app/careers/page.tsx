@@ -1,17 +1,14 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { pageSeo, site } from "@/lib/content";
+import { pageJsonLd, pageMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Button } from "@/components/ui/Button";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ContactCta } from "@/components/sections/ContactCta";
-import { site } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Careers",
-  description:
-    "Join Chipzenix — VLSI and embedded engineering roles in Hyderabad and Satupally, Telangana.",
-  alternates: { canonical: "/careers" },
-};
+export const metadata: Metadata = pageMetadata("/careers", pageSeo.careers);
 
 const values = [
   { title: "Craft over volume", body: "We take fewer projects and do them properly. Quality is the brand." },
@@ -33,6 +30,7 @@ export default function CareersPage() {
 
   return (
     <main>
+      <JsonLd data={pageJsonLd("/careers", "Careers", pageSeo.careers)} />
       <PageHeader
         kicker="Careers"
         title="Build silicon that ships at scale"

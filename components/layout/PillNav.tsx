@@ -115,8 +115,12 @@ export function PillNav() {
     const img = logoImgRef.current;
     if (!img) return;
     logoTween.current?.kill();
-    gsap.set(img, { rotate: 0 });
-    logoTween.current = gsap.to(img, { rotate: 360, duration: 0.5, ease: EASE });
+    // a short lift-and-settle; spinning a wordmark would make it unreadable
+    logoTween.current = gsap.fromTo(
+      img,
+      { scale: 1 },
+      { scale: 1.05, duration: 0.25, ease: EASE, yoyo: true, repeat: 1 },
+    );
   };
 
   const frame =
@@ -128,28 +132,24 @@ export function PillNav() {
         aria-label="Primary"
         className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-3 sm:px-6"
       >
-        {/* Logo pill */}
+        {/* Wordmark — unframed: the orbit makes it taller than a pill, and the
+            lettering needs the height to stay legible. */}
         <Link
           href="/"
           prefetch={false}
           aria-label="Chipzenix home"
           onMouseEnter={logoEnter}
-          className={`inline-flex h-11 items-center gap-2.5 pl-1.5 pr-4 ${frame}`}
+          className="-my-1 inline-flex shrink-0 items-center"
         >
-          <span className="inline-flex h-8 w-8 items-center justify-center overflow-hidden rounded-full">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              ref={logoImgRef}
-              src="/logo-icon.webp"
-              alt=""
-              width={32}
-              height={32}
-              className="h-8 w-8 object-contain"
-            />
-          </span>
-          <span className="font-display text-base font-semibold tracking-tight text-ink">
-            Chip<span className="text-accent">zenix</span>
-          </span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            ref={logoImgRef}
+            src="/logo.webp"
+            alt="Chipzenix"
+            width={720}
+            height={325}
+            className="h-12 w-auto drop-shadow-[0_2px_10px_rgba(0,0,0,0.65)] sm:h-14 xl:h-16"
+          />
         </Link>
 
         {/* Desktop pills + CTA */}

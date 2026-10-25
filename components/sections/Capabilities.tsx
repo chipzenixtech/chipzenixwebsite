@@ -12,7 +12,7 @@ export function Capabilities() {
       <div ref={containerRef} className="md:h-screen md:overflow-hidden">
         <div
           ref={trackRef}
-          className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-5 py-20 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:h-full md:items-center md:overflow-visible md:px-8 md:py-0"
+          className="flex snap-x snap-mandatory scroll-px-5 gap-6 overflow-x-auto px-5 py-20 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:h-full md:items-center md:overflow-visible md:px-8 md:py-0"
         >
           {/* Intro panel */}
           <div className="flex w-[82vw] max-w-md shrink-0 snap-start flex-col justify-center md:w-[34vw]">

@@ -39,8 +39,11 @@ export function SplashScreen() {
       }
       gsap
         .timeline({ onComplete: finish })
-        .from("[data-splash-mark]", { scale: 0.85, autoAlpha: 0, duration: 1, ease: "power3.out" })
-        .from("[data-splash-word]", { autoAlpha: 0, y: 16, duration: 0.7, ease: "power2.out" }, "-=0.5")
+        .fromTo(
+          "[data-splash-mark]",
+          { scale: 0.85, autoAlpha: 0 },
+          { scale: 1, autoAlpha: 1, duration: 1.2, ease: "power3.out" },
+        )
         // gentle breathing hold so the intro lasts ~3s instead of flashing by
         .to(
           "[data-splash-mark]",
@@ -72,19 +75,13 @@ export function SplashScreen() {
       />
       <Image
         data-splash-mark
-        src="/logo-icon.webp"
+        src="/logo.webp"
         alt="Chipzenix"
-        width={96}
-        height={96}
+        width={720}
+        height={325}
         priority
-        className="relative h-20 w-20"
+        className="relative h-auto w-64 sm:w-80"
       />
-      <p
-        data-splash-word
-        className="relative mt-5 font-display text-3xl font-semibold tracking-tight text-ink"
-      >
-        Chip<span className="text-accent">zenix</span>
-      </p>
     </div>
   );
 }

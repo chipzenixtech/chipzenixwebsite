@@ -31,8 +31,11 @@ fully static. See `README.md` for the full overview. Key rules when working here
 - **Brand styling:** accent is greenish-blue cyan (`--color-accent`, `#00dfe2`); label
   text uses the Chakra Petch font (`font-label`).
 - **SEO:** keep per-page metadata + canonicals, the layout's `Organization`/`WebSite`
-  JSON-LD, and `sitemap.ts`/`robots.ts` in sync when routes change. `SITE_URL`/`BASE`
-  are placeholders (`https://chipzenix.com`) until the real domain is set.
+  JSON-LD, and `sitemap.ts`/`robots.ts`/`llms.txt` in sync when routes change. The origin
+  is `SITE_URL` in `lib/seo.ts` (`https://www.chipzenix.com`, live on Vercel); page
+  metadata goes through `pageMetadata()` so each route gets its own share card.
+- **Logo:** `public/logo.webp` (white wordmark for the dark site); full-size white/black
+  transparent variants and the square icon live in `public/brand/`.
 - **Verify before claiming done:** `npx tsc --noEmit`, `npm run test:run`, and
   `npm run build` should all pass. Temporary helper scripts go to the scratchpad and
   must be removed, not committed.

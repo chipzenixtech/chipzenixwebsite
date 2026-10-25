@@ -15,7 +15,7 @@ npm run build    # production static export → ./out
 ## What the build produces
 
 `npm run build` writes the full site to **`./out`** (HTML per route + assets, `sitemap.xml`,
-`robots.txt`, `og.png`, favicon). Preview it locally with any static server:
+`robots.txt`, `llms.txt`, `manifest.webmanifest`, `og-chipzenix.jpg`, favicons). Preview it locally with any static server:
 
 ```bash
 npx serve out
@@ -36,9 +36,8 @@ Upload the contents of **`out/`** to any static host:
 
 ## Before launch — update these
 
-1. **Production domain.** Replace the placeholder `https://chipzenix.com` in:
-   - `app/layout.tsx` (`metadataBase`, OpenGraph `url`)
-   - `app/sitemap.ts` and `app/robots.ts` (`BASE`)
+1. **Production domain.** Live at `https://www.chipzenix.com`, set once as `SITE_URL` in
+   `lib/seo.ts` (canonicals, sitemap, robots, structured data, `llms.txt` all derive from it).
 2. **Founder content.** `lib/content.ts` → `founders` currently has `Muzammil` + a `Founder Two`
    placeholder, both using `/founder.webp`. Swap in real names, roles, bios, and professional
    headshots (drop new images in `public/` and update the `image` paths).
@@ -46,7 +45,8 @@ Upload the contents of **`out/`** to any static host:
    `lib/content.ts`. WhatsApp number is wired to **+91 96181 02268** (`wa.me/919618102268`).
 4. **Testimonials / roles.** The Anika Rao testimonial and the Careers roles are illustrative —
    replace with real ones in `lib/content.ts` and `app/careers/page.tsx`.
-5. **Social links.** Footer LinkedIn/X currently point to `#`.
+5. **Social links.** Add the LinkedIn/X URLs to `site.socials` in `lib/content.ts`; empty ones
+   stay hidden in the footer and out of the structured data.
 
 ## Notes
 

@@ -1,22 +1,20 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
+import { pageSeo, mission, vision, locations } from "@/lib/content";
+import { pageJsonLd, pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
 import { Propositions } from "@/components/ui/Propositions";
 import { SpotlightCard } from "@/components/ui/SpotlightCard";
 import { ContactCta } from "@/components/sections/ContactCta";
-import { mission, vision, locations } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "Chipzenix is a semiconductor engineering services company based in Hyderabad and Satupally, Telangana.",
-  alternates: { canonical: "/about" },
-};
+export const metadata: Metadata = pageMetadata("/about", pageSeo.about);
 
 export default function AboutPage() {
   return (
     <main>
+      <JsonLd data={pageJsonLd("/about", "About", pageSeo.about)} />
       <PageHeader
         kicker="About"
         title="People who take silicon seriously"

@@ -6,11 +6,16 @@ import { Capabilities } from "@/components/sections/Capabilities";
 import { Process } from "@/components/sections/Process";
 import { Testimonial } from "@/components/sections/Testimonial";
 import { Teasers } from "@/components/sections/Teasers";
+import { Faq } from "@/components/sections/Faq";
 import { ContactCta } from "@/components/sections/ContactCta";
+import { JsonLd } from "@/components/JsonLd";
+import { pageSeo } from "@/lib/content";
+import { pageJsonLd } from "@/lib/seo";
 
 export default function Home() {
   return (
     <main>
+      <JsonLd data={pageJsonLd("/", "Home", pageSeo.home)} />
       <Hero />
       <TrustStrip />
       <Industries />
@@ -19,6 +24,7 @@ export default function Home() {
       <Process />
       <Testimonial />
       <Teasers />
+      <Faq />
       <ContactCta />
     </main>
   );
