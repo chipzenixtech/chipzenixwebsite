@@ -41,8 +41,9 @@ Upload the contents of **`out/`** to any static host:
 2. **Founder content.** `lib/content.ts` → `founders` currently has `Muzammil` + a `Founder Two`
    placeholder, both using `/founder.webp`. Swap in real names, roles, bios, and professional
    headshots (drop new images in `public/` and update the `image` paths).
-3. **Real details.** Confirm the display email (`hello@chipzenix.com`) and phone in
-   `lib/content.ts`. WhatsApp number is wired to **+91 96181 02268** (`wa.me/919618102268`).
+3. **Contact details.** Headquarters: SBR CV Towers, Madhapur, Hyderabad, Telangana 500081;
+   mobile +91 83417 59481; WhatsApp **+91 96181 02268** (`wa.me/919618102268`). All live in
+   `lib/content.ts` (`site.contact`, `locations`). The site intentionally shows no email address.
 4. **Careers roles.** The roles in `app/careers/page.tsx` are illustrative; replace them with real openings.
 5. **Social links.** Add the LinkedIn/X URLs to `site.socials` in `lib/content.ts`; empty ones
    stay hidden in the footer and out of the structured data.

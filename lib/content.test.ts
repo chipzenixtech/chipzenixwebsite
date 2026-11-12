@@ -15,6 +15,8 @@ import {
   heroSlides,
   faqs,
   pageSeo,
+  headquarters,
+  addressLine,
 } from "./content";
 import { WHATSAPP_NUMBER } from "./whatsapp";
 
@@ -72,6 +74,12 @@ describe("content", () => {
       expect(s.alt.length).toBeGreaterThan(10);
       expect(s.caption.length).toBeGreaterThan(0);
     }
+  });
+
+  it("lists the Madhapur headquarters and mobile, and no company email", () => {
+    expect(addressLine(headquarters)).toBe("SBR CV Towers, Madhapur, Hyderabad, Telangana 500081");
+    expect(site.contact.phone).toBe("918341759481");
+    expect(visibleCopy()).not.toMatch(/@chipzenix\.com/);
   });
 
   it("keeps visible copy free of em dashes", () => {

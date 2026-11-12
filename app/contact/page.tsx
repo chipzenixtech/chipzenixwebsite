@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { pageSeo, site, locations } from "@/lib/content";
+import { pageSeo, site, locations, addressLine } from "@/lib/content";
 import { pageJsonLd, pageMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
@@ -39,10 +39,10 @@ export default function ContactPage() {
                   WhatsApp {site.contact.whatsappDisplay}
                 </a>
                 <a
-                  href={`mailto:${site.contact.email}`}
+                  href={`tel:+${site.contact.phone}`}
                   className="text-lg text-ink transition-colors hover:text-accent"
                 >
-                  {site.contact.email}
+                  Call {site.contact.phoneDisplay}
                 </a>
               </div>
             </div>
@@ -54,6 +54,9 @@ export default function ContactPage() {
                   <li key={l.city}>
                     <span className="text-ink">{l.city}</span>
                     <span className="text-muted"> · {l.role ?? l.region}</span>
+                    {l.street && (
+                      <address className="mt-1 max-w-xs not-italic text-muted">{addressLine(l)}</address>
+                    )}
                   </li>
                 ))}
               </ul>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { pageSeo, about, locations } from "@/lib/content";
+import { pageSeo, about, locations, addressLine } from "@/lib/content";
 import { pageJsonLd, pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { PageHeader } from "@/components/layout/PageHeader";
@@ -62,7 +62,7 @@ export default function AboutPage() {
                   <p className="mt-2 font-label text-xs uppercase tracking-[0.14em] text-accent">
                     {l.role ?? "Engineering hub"}
                   </p>
-                  <p className="mt-1 text-sm text-muted">{l.region}</p>
+                  <address className="mt-1 text-sm not-italic text-muted">{addressLine(l)}</address>
                 </SpotlightCard>
               </div>
             ))}

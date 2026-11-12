@@ -6,7 +6,7 @@ import { WHATSAPP_NUMBER } from "./whatsapp";
 // ── Types ───────────────────────────────────────────────────────────────────
 export type CapabilityGroup = { category: string; items: string[] };
 export type ProcessStep = { title: string; description: string };
-export type Location = { city: string; region: string; role?: string };
+export type Location = { city: string; region: string; role?: string; street?: string; postalCode?: string };
 export type NavLink = { label: string; href: string };
 export type Faq = { question: string; answer: string };
 export type PageSeo = { title: string; description: string; keywords?: string[] };
@@ -40,7 +40,9 @@ export const site = {
   contact: {
     whatsapp: WHATSAPP_NUMBER,
     whatsappDisplay: "+91 96181 02268",
-    email: "hello@chipzenix.com",
+    /** Mobile for calls, digits only with country code (tel: links, structured data). */
+    phone: "918341759481",
+    phoneDisplay: "+91 83417 59481",
   },
   // Profile URLs. Leave a value empty until the account exists: empty links are
   // hidden in the footer and left out of the structured data.
@@ -658,9 +660,21 @@ export const processSteps: ProcessStep[] = [
 
 // ── Locations ────────────────────────────────────────────────────────────────
 export const locations: Location[] = [
-  { city: "Hyderabad", region: "Telangana, India", role: "Headquarters" },
+  {
+    city: "Hyderabad",
+    region: "Telangana, India",
+    role: "Headquarters",
+    street: "SBR CV Towers, Madhapur",
+    postalCode: "500081",
+  },
   { city: "Satupally", region: "Telangana, India", role: "Engineering centre" },
 ];
+
+/** Postal address when we have one ("SBR CV Towers, …, Telangana 500081"), else city and region. */
+export const addressLine = (l: Location) =>
+  l.street ? `${l.street}, ${l.city}, Telangana ${l.postalCode}` : `${l.city}, ${l.region}`;
+
+export const headquarters = locations[0];
 
 // ── FAQ (visible on the home page + FAQPage structured data) ─────────────────
 // Answers are assembled from the data above so they can never drift from it.
@@ -696,11 +710,14 @@ export const faqs: Faq[] = [
   },
   {
     question: "Where is Chipzenix located?",
-    answer: `${locations.map((l) => `${l.city} (${l.role?.toLowerCase()})`).join(" and ")}, both in Telangana, India.`,
+    answer: `Our headquarters is at ${addressLine(headquarters)}, India, with an engineering centre in ${locations
+      .slice(1)
+      .map((l) => addressLine(l))
+      .join(" and ")}.`,
   },
   {
     question: "How do I start a project with Chipzenix?",
-    answer: `Message us on WhatsApp at ${site.contact.whatsappDisplay}, or fill in the contact form, which opens WhatsApp with your enquiry ready to send. Tell us what you're designing and we usually come back within a day.`,
+    answer: `Message us on WhatsApp at ${site.contact.whatsappDisplay}, call ${site.contact.phoneDisplay}, or fill in the contact form, which opens WhatsApp with your enquiry ready to send. Tell us what you're designing and we usually come back within a day.`,
   },
 ];
 

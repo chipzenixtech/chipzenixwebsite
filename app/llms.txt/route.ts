@@ -1,4 +1,17 @@
-import { about, domainPillars, domainsFor, faqs, industries, locations, mission, pageSeo, reasons, site, vision } from "@/lib/content";
+import {
+  about,
+  addressLine,
+  domainPillars,
+  domainsFor,
+  faqs,
+  industries,
+  locations,
+  mission,
+  pageSeo,
+  reasons,
+  site,
+  vision,
+} from "@/lib/content";
 import { SITE_URL, domainPages } from "@/lib/seo";
 
 // llms.txt (llmstxt.org): a plain-Markdown brief for AI assistants and answer
@@ -42,11 +55,11 @@ export function GET() {
     industries.join(", "),
     "",
     "## Locations",
-    ...locations.map((l) => `- ${l.city}, ${l.region}${l.role ? ` (${l.role})` : ""}`),
+    ...locations.map((l) => `- ${l.role ? `${l.role}: ` : ""}${addressLine(l)}${l.street ? ", India" : ""}`),
     "",
     "## Contact",
     `- WhatsApp: ${site.contact.whatsappDisplay} (https://wa.me/${site.contact.whatsapp})`,
-    `- Email: ${site.contact.email}`,
+    `- Phone: ${site.contact.phoneDisplay} (tel:+${site.contact.phone})`,
     `- Contact page: ${SITE_URL}/contact/`,
     "",
     "## FAQ",
