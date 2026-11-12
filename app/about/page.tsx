@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { pageSeo, about, locations, addressLine } from "@/lib/content";
+import { pageSeo, about, site, headquarters, addressLine } from "@/lib/content";
 import { pageJsonLd, pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import { PageHeader } from "@/components/layout/PageHeader";
@@ -52,20 +52,21 @@ export default function AboutPage() {
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 sm:py-28">
           <Reveal className="max-w-2xl">
             <h2 className="text-3xl font-semibold text-ink sm:text-4xl">Where we work</h2>
-            <p className="mt-4 text-muted">Two engineering centres in Telangana, India.</p>
+            <p className="mt-4 text-muted">Our headquarters in Madhapur, Hyderabad.</p>
           </Reveal>
-          <Reveal selector="[data-loc]" className="mt-12 grid gap-4 sm:grid-cols-2">
-            {locations.map((l) => (
-              <div data-loc key={l.city} className="h-full">
-                <SpotlightCard className="h-full rounded-lg border border-border bg-surface p-8">
-                  <h3 className="text-2xl font-semibold text-ink">{l.city}</h3>
-                  <p className="mt-2 font-label text-xs uppercase tracking-[0.14em] text-accent">
-                    {l.role ?? "Engineering hub"}
-                  </p>
-                  <address className="mt-1 text-sm not-italic text-muted">{addressLine(l)}</address>
-                </SpotlightCard>
-              </div>
-            ))}
+          <Reveal className="mt-12 max-w-xl">
+            <SpotlightCard className="rounded-lg border border-border bg-surface p-8">
+              <p className="font-label text-xs uppercase tracking-[0.14em] text-accent">{headquarters.role}</p>
+              <address className="mt-3 text-2xl font-semibold leading-snug not-italic text-ink">
+                {addressLine(headquarters)}
+              </address>
+              <a
+                href={`tel:+${site.contact.phone}`}
+                className="mt-4 inline-block text-muted transition-colors hover:text-accent"
+              >
+                Phone: {site.contact.phoneDisplay}
+              </a>
+            </SpotlightCard>
           </Reveal>
         </div>
       </section>

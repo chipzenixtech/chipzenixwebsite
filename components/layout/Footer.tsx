@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { navCta, navLinks, site, locations, addressLine } from "@/lib/content";
+import { navCta, navLinks, site, headquarters, addressLine } from "@/lib/content";
 
 const socials = [
   { label: "LinkedIn", href: site.socials.linkedin },
@@ -63,15 +63,10 @@ export function Footer() {
           <a href={`tel:+${site.contact.phone}`} className="text-sm text-muted transition-colors hover:text-ink">
             Call {site.contact.phoneDisplay}
           </a>
-          <div className="mt-2 flex flex-col gap-3 text-sm text-muted">
-            {locations.map((loc) => (
-              <address key={loc.city} className="not-italic">
-                <span className="text-ink">{loc.city}</span>
-                {loc.role ? ` · ${loc.role}` : ""}
-                {loc.street && <span className="mt-0.5 block max-w-[16rem]">{addressLine(loc)}</span>}
-              </address>
-            ))}
-          </div>
+          <address className="mt-2 max-w-[16rem] text-sm not-italic text-muted">
+            <span className="block text-ink">{headquarters.role}</span>
+            {addressLine(headquarters)}
+          </address>
         </div>
       </div>
 

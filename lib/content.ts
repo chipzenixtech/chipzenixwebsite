@@ -667,7 +667,6 @@ export const locations: Location[] = [
     street: "SBR CV Towers, Madhapur",
     postalCode: "500081",
   },
-  { city: "Satupally", region: "Telangana, India", role: "Engineering centre" },
 ];
 
 /** Postal address when we have one ("SBR CV Towers, …, Telangana 500081"), else city and region. */
@@ -710,10 +709,7 @@ export const faqs: Faq[] = [
   },
   {
     question: "Where is Chipzenix located?",
-    answer: `Our headquarters is at ${addressLine(headquarters)}, India, with an engineering centre in ${locations
-      .slice(1)
-      .map((l) => addressLine(l))
-      .join(" and ")}.`,
+    answer: `Our headquarters is at ${addressLine(headquarters)}, India. You can also reach us on ${site.contact.phoneDisplay}.`,
   },
   {
     question: "How do I start a project with Chipzenix?",
@@ -761,12 +757,12 @@ export const pageSeo = {
   about: {
     title: "About Us",
     description:
-      "A technology-driven engineering services company in Hyderabad and Satupally, Telangana, specializing in VLSI, analog layout and embedded systems.",
+      "A technology-driven engineering services company in Madhapur, Hyderabad, specializing in VLSI design, analog layout and embedded systems development.",
   },
   careers: {
     title: "Careers in VLSI & Embedded Engineering",
     description:
-      "Join Chipzenix: VLSI, verification, physical design and embedded engineering roles in Hyderabad and Satupally, Telangana. Remote-friendly.",
+      "Join Chipzenix: VLSI, verification, physical design and embedded engineering roles at our Madhapur, Hyderabad office. Remote-friendly.",
     keywords: ["VLSI jobs Hyderabad", "embedded engineer jobs", "verification engineer jobs", "physical design jobs"],
   },
   contact: {

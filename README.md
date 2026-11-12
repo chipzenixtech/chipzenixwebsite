@@ -2,7 +2,7 @@
 
 Marketing website for **Chipzenix** — a semiconductor engineering services company
 (VLSI & ASIC design, embedded systems, and AI hardware acceleration), based in
-Hyderabad and Satupally, Telangana, India.
+Madhapur, Hyderabad, Telangana, India (SBR CV Towers, 500081).
 
 Dark, brand-true marketing site with an animated circuit/wafer visual language,
 smooth scrolling, and scroll-triggered reveals. Built as a fully static site so it

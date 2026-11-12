@@ -14,15 +14,15 @@ const values = [
   { title: "Craft over volume", body: "We take fewer projects and do them properly. Quality is the brand." },
   { title: "Ownership, end to end", body: "Engineers own their blocks from spec to signoff, and the decisions in between." },
   { title: "Teach and be taught", body: "Reviews are how we level up. Strong opinions, held loosely, backed by data." },
-  { title: "Remote-friendly", body: "Hybrid across our Telangana centres, asynchronous by default, synchronous when it matters." },
+  { title: "Remote-friendly", body: "Hybrid from our Madhapur, Hyderabad office, asynchronous by default, synchronous when it matters." },
 ];
 
 // Placeholder roles — replace with real openings.
 const roles = [
   { title: "Senior RTL Design Engineer", location: "Hyderabad / Remote", type: "Full-time" },
   { title: "Verification Engineer (UVM)", location: "Hyderabad / Remote", type: "Full-time" },
-  { title: "Embedded Firmware Engineer", location: "Satupally / Remote", type: "Full-time" },
-  { title: "Physical Design Engineer", location: "Satupally", type: "Full-time" },
+  { title: "Embedded Firmware Engineer", location: "Hyderabad / Remote", type: "Full-time" },
+  { title: "Physical Design Engineer", location: "Hyderabad", type: "Full-time" },
 ];
 
 export default function CareersPage() {

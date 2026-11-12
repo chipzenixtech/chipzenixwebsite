@@ -90,7 +90,7 @@ describe("content", () => {
     expect(capabilities.length).toBeGreaterThan(0);
     expect(industries.length).toBeGreaterThan(0);
     expect(processSteps.length).toBeGreaterThan(0);
-    expect(locations.map((l) => l.city)).toEqual(["Hyderabad", "Satupally"]);
+    expect(locations.map((l) => l.city)).toEqual(["Hyderabad"]);
   });
 
   it("has FAQ answers built from real content", () => {

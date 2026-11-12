@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
-import { pageSeo, site, locations, addressLine } from "@/lib/content";
+import { pageSeo, site, headquarters, addressLine } from "@/lib/content";
 import { pageJsonLd, pageMetadata } from "@/lib/seo";
 import { PageHeader } from "@/components/layout/PageHeader";
 import { Reveal } from "@/components/ui/Reveal";
@@ -48,18 +48,11 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h2 className="font-label text-xs uppercase tracking-[0.16em] text-faint">Locations</h2>
-              <ul className="mt-4 flex flex-col gap-3">
-                {locations.map((l) => (
-                  <li key={l.city}>
-                    <span className="text-ink">{l.city}</span>
-                    <span className="text-muted"> · {l.role ?? l.region}</span>
-                    {l.street && (
-                      <address className="mt-1 max-w-xs not-italic text-muted">{addressLine(l)}</address>
-                    )}
-                  </li>
-                ))}
-              </ul>
+              <h2 className="font-label text-xs uppercase tracking-[0.16em] text-faint">Address</h2>
+              <address className="mt-4 max-w-xs text-lg not-italic text-ink">
+                <span className="block text-sm text-muted">{headquarters.role}</span>
+                {addressLine(headquarters)}
+              </address>
             </div>
           </Reveal>
         </div>
