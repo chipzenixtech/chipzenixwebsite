@@ -9,7 +9,6 @@ const socials = [
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const whatsapp = `https://wa.me/${site.contact.whatsapp}`;
 
   return (
     <footer className="border-t border-border bg-bg-deep">
@@ -57,11 +56,8 @@ export function Footer() {
 
         <div className="flex flex-col gap-3">
           <h2 className="font-mono text-xs uppercase tracking-[0.2em] text-faint">Contact</h2>
-          <a href={whatsapp} target="_blank" rel="noopener noreferrer" className="text-sm text-muted transition-colors hover:text-ink">
-            WhatsApp {site.contact.whatsappDisplay}
-          </a>
           <a href={`tel:+${site.contact.phone}`} className="text-sm text-muted transition-colors hover:text-ink">
-            Call {site.contact.phoneDisplay}
+            Phone: {site.contact.phoneDisplay}
           </a>
           <address className="mt-2 max-w-[16rem] text-sm not-italic text-muted">
             <span className="block text-ink">{headquarters.role}</span>

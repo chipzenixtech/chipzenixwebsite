@@ -24,10 +24,11 @@ const visibleCopy = () =>
   JSON.stringify({ site, about, mission, vision, domains, reasons, industries, faqs, pageSeo, heroSlides });
 
 describe("content", () => {
-  it("carries the brand identity and WhatsApp contact", () => {
+  it("carries the brand identity and the single company phone number", () => {
     expect(site.name).toBe("Chipzenix");
     expect(site.tagline).toMatch(/silicon/i);
-    expect(site.contact.whatsapp).toBe(WHATSAPP_NUMBER);
+    expect(site.contact.phone).toBe(WHATSAPP_NUMBER);
+    expect(JSON.stringify(site)).not.toContain("9618102268");
   });
 
   it("uses the client's hero line, mission and vision", () => {

@@ -42,7 +42,7 @@ Upload the contents of **`out/`** to any static host:
    placeholder, both using `/founder.webp`. Swap in real names, roles, bios, and professional
    headshots (drop new images in `public/` and update the `image` paths).
 3. **Contact details.** Headquarters: SBR CV Towers, Madhapur, Hyderabad, Telangana 500081;
-   mobile +91 83417 59481; WhatsApp **+91 96181 02268** (`wa.me/919618102268`). All live in
+   phone **+91 83417 59481** (the only number on the site). All live in
    `lib/content.ts` (`site.contact`, `locations`). The site intentionally shows no email address.
 4. **Careers roles.** The roles in `app/careers/page.tsx` are illustrative; replace them with real openings.
 5. **Social links.** Add the LinkedIn/X URLs to `site.socials` in `lib/content.ts`; empty ones
@@ -51,7 +51,7 @@ Upload the contents of **`out/`** to any static host:
 ## Notes
 
 - **Contact form** has no backend by design: it composes the enquiry and opens WhatsApp to
-  +91 96181 02268 with the message pre-filled (`lib/whatsapp.ts`).
+  +91 83417 59481 with the message pre-filled (`lib/whatsapp.ts`).
 - **Imagery** in `public/images/` is semiconductor photography duotoned to the logo blue from Wikimedia
   Commons (CC-licensed). Replace with owned/licensed assets if preferred.
 - **Fonts** are self-hosted (Clash Display, General Sans via Fontshare; JetBrains Mono via Google)

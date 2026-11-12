@@ -38,10 +38,8 @@ export const site = {
   intro:
     "Chipzenix is a technology-driven engineering services company specializing in VLSI design, semiconductor physical design, analog layout engineering, embedded systems development and ASIC/SoC design services.",
   contact: {
-    whatsapp: WHATSAPP_NUMBER,
-    whatsappDisplay: "+91 96181 02268",
-    /** Mobile for calls, digits only with country code (tel: links, structured data). */
-    phone: "918341759481",
+    /** The single company number, digits only with country code (tel: links, structured data). */
+    phone: WHATSAPP_NUMBER,
     phoneDisplay: "+91 83417 59481",
   },
   // Profile URLs. Leave a value empty until the account exists: empty links are
@@ -713,7 +711,7 @@ export const faqs: Faq[] = [
   },
   {
     question: "How do I start a project with Chipzenix?",
-    answer: `Message us on WhatsApp at ${site.contact.whatsappDisplay}, call ${site.contact.phoneDisplay}, or fill in the contact form, which opens WhatsApp with your enquiry ready to send. Tell us what you're designing and we usually come back within a day.`,
+    answer: `Reach us on ${site.contact.phoneDisplay}, or fill in the contact form and send your enquiry in one tap. Tell us what you're designing and we usually come back within a day.`,
   },
 ];
 
@@ -767,7 +765,7 @@ export const pageSeo = {
   },
   contact: {
     title: "Contact Us",
-    description: `Start a VLSI, analog layout or embedded engineering project with Chipzenix. Message us on WhatsApp at ${site.contact.whatsappDisplay}, we usually reply within a day.`,
+    description: `Start a VLSI, analog layout or embedded engineering project with Chipzenix. Phone ${site.contact.phoneDisplay}. We usually reply within a day.`,
   },
 } satisfies Record<string, PageSeo>;
 

@@ -7,6 +7,7 @@ import {
   type ContactFields,
 } from "@/lib/whatsapp";
 import { Button } from "@/components/ui/Button";
+import { site } from "@/lib/content";
 
 const EMPTY: ContactFields = { name: "", email: "", company: "", message: "" };
 
@@ -95,9 +96,9 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-wrap items-center gap-4">
-        <Button type="submit">Send via WhatsApp</Button>
+        <Button type="submit">Send enquiry</Button>
         <p className="font-mono text-xs text-faint">
-          Opens WhatsApp with your message ready to send.
+          Opens a message to {site.contact.phoneDisplay} with your enquiry ready to send.
         </p>
       </div>
     </form>

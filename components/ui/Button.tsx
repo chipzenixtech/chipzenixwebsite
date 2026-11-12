@@ -33,6 +33,14 @@ export function Button({
 }: ButtonProps) {
   const cls = `${base} ${variants[variant]} ${className}`;
 
+  // tel:/mailto: links stay in the same tab and skip client-side routing
+  if (href && /^(tel|mailto):/.test(href))
+    return (
+      <a href={href} className={cls} onClick={onClick} aria-label={ariaLabel}>
+        {children}
+      </a>
+    );
+
   if (href && external)
     return (
       <a

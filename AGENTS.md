@@ -20,8 +20,11 @@ fully static. See `README.md` for the full overview. Key rules when working here
 - **Static export only.** `next.config.ts` uses `output: "export"`; there is no server
   runtime. No server actions, route handlers with dynamic behaviour, or
   `next/image` optimization (images are `unoptimized`). `npm run build` emits `out/`.
-- **Contact is WhatsApp-only** (`+91 96181 02268`, see `lib/whatsapp.ts`). No backend
-  form handling. WhatsApp bold uses *single* asterisks, not Markdown's double.
+- **Contact:** one phone number only, **+91 83417 59481** (`site.contact.phone`, sourced
+  from `lib/whatsapp.ts`), always labelled "Phone". Never list a separate WhatsApp or
+  "call" number, and show no email. Address: SBR CV Towers, Madhapur, Hyderabad, Telangana
+  500081 (the only location). The contact form hands off to the same number via wa.me (no
+  backend); WhatsApp bold uses *single* asterisks, not Markdown's double.
 - **Motion policy:**
   - Decorative canvas backgrounds (`CircuitField`, `WaferField`) animate on every
     device regardless of OS reduced-motion, but stay low-amplitude/slow/non-flashing

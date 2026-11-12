@@ -58,7 +58,6 @@ export function GET() {
     `- ${headquarters.role}: ${addressLine(headquarters)}, India`,
     "",
     "## Contact",
-    `- WhatsApp: ${site.contact.whatsappDisplay} (https://wa.me/${site.contact.whatsapp})`,
     `- Phone: ${site.contact.phoneDisplay} (tel:+${site.contact.phone})`,
     `- Contact page: ${SITE_URL}/contact/`,
     "",

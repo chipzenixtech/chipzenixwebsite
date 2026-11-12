@@ -5,8 +5,12 @@ export type ContactFields = {
   message: string;
 };
 
-/** Chipzenix WhatsApp number in wa.me form (digits only, country code, no +). */
-export const WHATSAPP_NUMBER = "919618102268";
+/**
+ * The company's one phone number (digits only, country code, no +). The contact
+ * form hands enquiries to this same number via wa.me; the site shows it only as
+ * "Phone", never as a separate WhatsApp number.
+ */
+export const WHATSAPP_NUMBER = "918341759481";
 
 export function validateContact(
   f: Partial<ContactFields>,

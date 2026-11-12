@@ -26,8 +26,6 @@ const roles = [
 ];
 
 export default function CareersPage() {
-  const apply = `https://wa.me/${site.contact.whatsapp}`;
-
   return (
     <main>
       <JsonLd data={pageJsonLd("/careers", "Careers", pageSeo.careers)} />
@@ -77,8 +75,8 @@ export default function CareersPage() {
                       {r.location} · {r.type}
                     </p>
                   </div>
-                  <Button href={apply} external variant="ghost" className="min-h-0 shrink-0 px-5 py-2.5">
-                    Apply via WhatsApp
+                  <Button href="/contact" variant="ghost" className="min-h-0 shrink-0 px-5 py-2.5">
+                    Apply
                   </Button>
                 </SpotlightCard>
               </div>

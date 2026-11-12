@@ -4,7 +4,6 @@ import { CircuitField } from "@/components/visual/CircuitField";
 import { site } from "@/lib/content";
 
 export function ContactCta() {
-  const wa = `https://wa.me/${site.contact.whatsapp}`;
   return (
     <section className="relative isolate overflow-hidden border-t border-border bg-bg-deep">
       <CircuitField className="pointer-events-none absolute inset-0 h-full w-full opacity-40 [mask-image:radial-gradient(120%_120%_at_50%_25%,black,transparent_72%)]" />
@@ -19,8 +18,8 @@ export function ContactCta() {
           </p>
           <div className="mt-9 flex flex-wrap justify-center gap-4">
             <Button href="/contact">Contact Us</Button>
-            <Button href={wa} external variant="ghost">
-              Message us on WhatsApp
+            <Button href={`tel:+${site.contact.phone}`} variant="ghost">
+              Phone: {site.contact.phoneDisplay}
             </Button>
           </div>
         </Reveal>

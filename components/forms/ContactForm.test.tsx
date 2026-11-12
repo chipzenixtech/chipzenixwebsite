@@ -13,7 +13,7 @@ describe("ContactForm", () => {
     const user = userEvent.setup();
     render(<ContactForm />);
 
-    await user.click(screen.getByRole("button", { name: /whatsapp/i }));
+    await user.click(screen.getByRole("button", { name: /send enquiry/i }));
 
     expect(await screen.findByText(/enter your name/i)).toBeInTheDocument();
     expect(screen.getByText(/enter your email/i)).toBeInTheDocument();
@@ -29,11 +29,11 @@ describe("ContactForm", () => {
     await user.type(screen.getByLabelText(/name/i), "Asha Rao");
     await user.type(screen.getByLabelText(/email/i), "asha@example.com");
     await user.type(screen.getByLabelText(/message/i), "We need 7nm verification.");
-    await user.click(screen.getByRole("button", { name: /whatsapp/i }));
+    await user.click(screen.getByRole("button", { name: /send enquiry/i }));
 
     expect(open).toHaveBeenCalledTimes(1);
     const url = open.mock.calls[0][0] as string;
-    expect(url).toContain("https://wa.me/919618102268?text=");
+    expect(url).toContain("https://wa.me/918341759481?text=");
     expect(decodeURIComponent(url)).toContain("Asha Rao");
   });
 });

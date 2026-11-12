@@ -9,7 +9,6 @@ import { ContactForm } from "@/components/forms/ContactForm";
 export const metadata: Metadata = pageMetadata("/contact", pageSeo.contact);
 
 export default function ContactPage() {
-  const wa = `https://wa.me/${site.contact.whatsapp}`;
 
   return (
     <main>
@@ -28,23 +27,13 @@ export default function ContactPage() {
 
           <Reveal className="flex flex-col gap-8">
             <div>
-              <h2 className="font-label text-xs uppercase tracking-[0.16em] text-faint">Direct</h2>
-              <div className="mt-4 flex flex-col gap-2">
-                <a
-                  href={wa}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-lg text-ink transition-colors hover:text-accent"
-                >
-                  WhatsApp {site.contact.whatsappDisplay}
-                </a>
-                <a
-                  href={`tel:+${site.contact.phone}`}
-                  className="text-lg text-ink transition-colors hover:text-accent"
-                >
-                  Call {site.contact.phoneDisplay}
-                </a>
-              </div>
+              <h2 className="font-label text-xs uppercase tracking-[0.16em] text-faint">Phone</h2>
+              <a
+                href={`tel:+${site.contact.phone}`}
+                className="mt-4 inline-block text-lg text-ink transition-colors hover:text-accent"
+              >
+                {site.contact.phoneDisplay}
+              </a>
             </div>
 
             <div>

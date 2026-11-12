@@ -76,8 +76,10 @@ em dashes (a test enforces it).
 
 ## Contact
 
-The only live contact channel is **WhatsApp** (`+91 96181 02268`). The contact form
-composes a pre-filled WhatsApp message — there is no server-side form handling.
+The site lists **one** contact number, **+91 83417 59481** (shown as "Phone"), and the
+headquarters address: SBR CV Towers, Madhapur, Hyderabad, Telangana 500081. There is no
+email. The contact form composes a pre-filled message to that same number via WhatsApp;
+there is no server-side form handling.
 
 ## Motion & accessibility
 
